@@ -15,6 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/editprofile', function () {
+    return view('profile.editProfile');
+});
+Route::get('/profile', function () {
+    return view('profile.profile');
+});
+Route::get('/jobs', function () {
+    return view('jobs.jobOffers');
+});
+Route::get('/createaccount', function () {
+    return view('admin.createAccount');
+});
+Route::get('/applicants', function () {
+    return view('jobs.applicants');
+});
+Route::get('/editprofile', function () {
+    return view('profile.editProfile');
+});
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
