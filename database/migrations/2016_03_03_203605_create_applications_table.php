@@ -15,7 +15,7 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date_posted');
-            $table->enum('status', []);
+            $table->enum('status', ['Pending', 'Accepted', 'Rejected']);
             $table->timestamps();
         });
     }
