@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Profile;
 
 class User extends Authenticatable
 {
@@ -27,11 +26,11 @@ class User extends Authenticatable
 
     //Returns the profile of the user
     public funcion getProfile() {
-      return $this->hasOne('App\Profile')
+      return $this->hasOne('Profile')
     }
 
     //Returns applications that the user has submitted
     public function getApplications() {
-      return $this->hasMany('App\Application')
+      return $this->hasMany('Application')
     }
 }
