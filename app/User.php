@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Profile;
 
 class User extends Authenticatable
 {
@@ -23,4 +24,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Returns the profile of the user
+    public funcion getProfile() {
+      return $this->hasOne('App\Profile')
+    }
+
+    //Returns applications that the user has submitted
+    public function getApplications() {
+      return $this->hasMany('App\Application')
+    }
 }
