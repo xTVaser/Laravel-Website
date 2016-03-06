@@ -23,4 +23,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Returns the profile of the user
+    public funcion getProfile() {
+      return $this->hasOne('Profile')
+    }
+
+    //Returns applications that the user has submitted
+    public function getApplications() {
+      return $this->hasMany('Application')
+    }
 }
