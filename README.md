@@ -2,5 +2,12 @@
 Software Enginneering
 
 # Steps to Setting up Docker
-First install docker-compose
-Then follow this http://harshjv.github.io/blog/laravel-5-with-dockerized-gulp-php-fpm-mysql-and-nginx/
+chmod +x setup
+run setup (you may need to be added to the docker group)
+composer install
+php artisan serve
+php artisan migrate
+
+# Helpful Websites
+http://bootsnipp.com/forms
+
