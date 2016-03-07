@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password',
     ];
 
     /**
@@ -25,12 +25,12 @@ class User extends Authenticatable
     ];
 
     //Returns the profile of the user
-    public funcion getProfile() {
-      return $this->hasOne('Profile')
+    public function getProfile() {
+      return $this->hasOne('Profile');
     }
 
     //Returns applications that the user has submitted
     public function getApplications() {
-      return $this->hasMany('Application')
+      return $this->hasMany('Application');
     }
 }
