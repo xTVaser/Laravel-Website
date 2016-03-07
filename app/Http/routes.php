@@ -24,6 +24,9 @@ Route::get('/profile', function () {
 
 Route::get('/jobs', 'JobController@index');
 
+Route::get('/jobs/create', 'JobController@create');
+Route::post('/jobs/create', 'JobController@store');
+
 Route::get('/createaccount', function () {
     return view('admin.createAccount');
 });

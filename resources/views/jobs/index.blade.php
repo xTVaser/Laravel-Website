@@ -7,7 +7,9 @@
   </div>
 
   @foreach($jobs as $job)
-    <p>{{ $job->title }}<p><br>
+    <h2>{{ $job->title }}</h2>
+    <p>{{ $job->description }}</p>
+    <p>{{ $job->salary }}</p>
   @endforeach
 </div>
 @endsection
