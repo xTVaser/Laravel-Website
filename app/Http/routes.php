@@ -21,9 +21,9 @@ Route::get('/editprofile', function () {
 Route::get('/profile', function () {
     return view('profile.profile');
 });
-Route::get('/jobs', function () {
-    return view('jobs.jobOffers');
-});
+
+Route::get('/jobs', 'JobController@index');
+
 Route::get('/createaccount', function () {
     return view('admin.createAccount');
 });
