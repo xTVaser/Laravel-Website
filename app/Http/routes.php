@@ -37,8 +37,6 @@ Route::get('/editprofile', function () {
     return view('profile.editProfile');
 });
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
