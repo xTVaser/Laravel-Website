@@ -36,6 +36,9 @@ Route::get('/applicants', function () {
 Route::get('/editprofile', function () {
     return view('profile.editProfile');
 });
+Route::get('/my-applications', function() {
+    return view('applications.my-applications');
+});
 
 /*
 |--------------------------------------------------------------------------

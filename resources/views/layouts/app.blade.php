@@ -64,6 +64,10 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/editprofile') }}"><i class="fa fa-btn fa-pencil-square-o"></i>Edit Profile</a></li>
                                 <li><a href="{{ url('/logout') }} "><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/my-applications')}} "><i class="fa fa-btn fa-folder-open"></i>My Applications</a></li>
+                                <!-- This Notification button should check if the user has notifications. -->
+                                <!-- SCOPE <li><a href="{{ url('/notifications')}} "><i class="fa fa-btn fa-envelope"></i>Notifications</a></li> CREEP -->
+                                <!-- If they do we make a glowy thing or something, otherwise normal -->
                             </ul>
                         </li>
                     @endif
