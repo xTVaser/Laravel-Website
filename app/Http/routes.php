@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/editprofile', function () {
     return view('profile.editProfile');
 });
@@ -51,5 +47,5 @@ Route::get('/editprofile', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
 });
