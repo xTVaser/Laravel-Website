@@ -7,8 +7,9 @@ Software Enginneering
 - you can branch off master to do view changes and such, as this is a stable branch, or the branch rob/will create soon.  
 
 # Steps to Setting up Docker
-- chmod +x setup  
-- run setup ./setup (you may need to be added to the docker group)  
+- sudo dnf install docker
+- chmod +x setup.sh  
+- run setup ./setup.sh (you may need to be added to the docker group)  
 - composer install  
 - composer update
 - php artisan serve  (turns on web server on port 8080)
@@ -30,6 +31,11 @@ Software Enginneering
 - Controllers - app/httpd/controllers  
 - Models - app/
 - Routes File - app/httpd/
+
+# If you'd like to view the database
+- download http://dev.mysql.com/downloads/file/?id=460630
+- navigate to the file run 'sudo dnf install <the file>'
+- open workbench and you should be able to access the :3306 database.
  
 # If the website displays an error such as "table.x.. does not exist" 
 - run php artisan migrate  
