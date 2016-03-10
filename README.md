@@ -2,6 +2,8 @@
 Software Enginneering
 
 # Cloning the repository
+- sudo dnf install git
+- git clone https://github.com/xTVaser/laravelwebsite.git
 - clone the entire repository, DO NOT work on master, OR merge with master  
 - dev branch is used for database changes and internal workings, do not use it to develop front end pages.
 - you can branch off master to do view changes and such, as this is a stable branch, or the branch rob/will create soon.  
