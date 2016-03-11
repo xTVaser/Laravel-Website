@@ -22,7 +22,7 @@ Route::get('/jobs/create',      'JobController@create');
 Route::post('/jobs/create',     'JobController@store');
 
 //Applications
-Route::get('/applicants', 'ApplicationController@view');
+Route::get('/applicants',       'ApplicationController@view');
 
 //Account
 Route::get('/createaccount', function () {
