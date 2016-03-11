@@ -1,0 +1,3 @@
+I dont know how the register form deals with errors, makes some error variable that is defined somewhere, maybe in the illuminate controllers.
+
+Slight issues with homepage, it should open up the login page unless already logged in.

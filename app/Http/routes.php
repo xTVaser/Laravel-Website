@@ -11,30 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Profile
+Route::get('/profile',          'ProfileController@view');
+Route::get('/editprofile',      'ProfileController@edit');
 
-Route::get('/editprofile', function () {
-    return view('profile.editProfile');
-});
-Route::get('/profile', function () {
-    return view('profile.profile');
-});
+//Jobs
+Route::get('/jobs',             'JobController@index');
+Route::get('/jobs/create',      'JobController@create');
 
-Route::get('/jobs', 'JobController@index');
+Route::post('/jobs/create',     'JobController@store');
 
-Route::get('/jobs/create', 'JobController@create');
-Route::post('/jobs/create', 'JobController@store');
+//Applications
+Route::get('/applicants',       'ApplicationController@view');
 
+//Account
 Route::get('/createaccount', function () {
     return view('admin.createAccount');
 });
-Route::get('/applicants', function () {
-    return view('jobs.applicants');
-});
-Route::get('/editprofile', function () {
-    return view('profile.editProfile');
+
+
+//Temporary Route
+Route::get('/mail-config',  function() {
+    return config('mail');
 });
 Route::get('/my-applications', function() {
     return view('applications.my-applications');
@@ -54,5 +52,5 @@ Route::get('/my-applications', function() {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
 });
