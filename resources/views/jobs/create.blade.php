@@ -5,7 +5,7 @@
   <h1>Create New Job</h1><hr/>
 
   {!! Form::open() !!}
-  {!! Form::token() !!}
+  {!! csrf_field() !!}
   <div class="form-group">
     {!! Form::label('title') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
