@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>E.A.R.S.</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -40,14 +40,18 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Employee Application Review System
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('/jobs')}}">Jobs</a></li>
+                        <li><a href="{{ url('/jobs/create')}}">Create Job</a></li>
+                        <li><a href="{{ url('/applicants')}}">Applicants</a></li>
+                        <li><a href="{{ url('/createaccount')}}">Create Account</a></li>
+                        <li><a href="{{ url('/mail-config')}}">Email Testing</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -59,11 +63,13 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                Logged in as: <b>{{ Auth::user()->email }}</b> <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>View Profile</a></li>
+                                <li><a href="{{ url('/editprofile') }}"><i class="fa fa-btn fa-pencil-square-o"></i>Edit Profile</a></li>
+                                <li><a href="{{ url('/logout') }} "><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif

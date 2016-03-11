@@ -11,8 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Profile
+Route::get('/profile',          'ProfileController@view');
+Route::get('/editprofile',      'ProfileController@edit');
+
+//Jobs
+Route::get('/jobs',             'JobController@index');
+Route::get('/jobs/create',      'JobController@create');
+
+Route::post('/jobs/create',     'JobController@store');
+
+//Applications
+Route::get('/applicants',       'ApplicationController@view');
+
+//Account
+Route::get('/createaccount', function () {
+    return view('admin.createAccount');
+});
+
+
+//Temporary Route
+Route::get('/mail-config',  function() {
+    return config('mail');
 });
 
 /*
@@ -26,18 +46,8 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
-});
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
 });
