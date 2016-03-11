@@ -33,6 +33,10 @@ Route::get('/editprofile', function () {
     return view('profile.editProfile');
 });
 
+Route::get('/mail-config',  function() {
+    return config('mail');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
