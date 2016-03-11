@@ -47,6 +47,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/jobs')}}">Jobs</a></li>
+                        <li><a href="{{ url('/jobs/create')}}">Create Job</a></li>
+                        <li><a href="{{ url('/applicants')}}">Applicants</a></li>
+                        <li><a href="{{ url('/createaccount')}}">Create Account</a></li>
+                        <li><a href="{{ url('/mail-config')}}">Email Testing</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
