@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Request;
 use App\Job;
 
-class ProfileController extends Controller
+class JobController extends Controller
 {
+    //
     public function index()
     {
 
