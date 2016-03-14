@@ -31,6 +31,10 @@ body {
 	color: #FFF;
 }
 
+.navbar-default .navbar-brand:hover {
+  color: #448aff;
+}
+
 .navbar-default .navbar-brand a:hover {
   color: #448aff;
 }
