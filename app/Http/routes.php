@@ -34,6 +34,9 @@ Route::get('/createaccount', function () {
 Route::get('/mail-config',  function() {
     return config('mail');
 });
+Route::get('/my-applications', function() {
+    return view('applications.my-applications');
+});
 
 /*
 |--------------------------------------------------------------------------
