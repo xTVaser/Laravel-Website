@@ -1,59 +1,68 @@
+@darkPrim:  #7B1FA2;
+@mainPrim:  #9C27B0;
+@lightPrim: #E1BEE7;
+@textCol:   #FFFFFF;
+@accent:    #448AFF;
+@textPrim:  #212121;
+@textSec:   #727272;
+@divider:   #B6B6B6;
+
 body {
-  background-color: #9C27B0;
+  background-color: @mainPrim;
 }
 
 .panel-body {
-  background-color: #FFF;
+  background-color: @textCol;
 }
 
 .navbar {
-  background-color: #7B1FA2;
+  background-color: @darkPrim;
   border-color: transparent;
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #FFF;
+	color: @textCol;
 
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-	color: #448aff;
+	color: @accent;
 
 }
 
 .panel-default > .panel-heading {
-	color: #212121;
-	background-color: #e1bee7;
-	border-color: #e1bee7;
+	color: @textPrim;
+	background-color: @lightPrim;
+	border-color: @lightPrim;
 }
 
 .navbar-default .navbar-brand {
-	color: #FFF;
+	color: @textCol;
 }
 
 .navbar-default .navbar-brand:hover {
-  color: #448aff;
+  color: @accent;
 }
 
 .navbar-default .navbar-brand a:hover {
-  color: #448aff;
+  color: @accent;
 }
 
 .dropdown-menu {
-  background-color: #e1bee7;
-  border-color: #b6b6b6;
+  background-color: @lightPrim;
+  border-color: @divider;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
 	color: #555;
-	background-color: #e1bee7;
+	background-color: @lightPrim;
 }
 
 .btn-primary {
-	color: #fff;
-	background-color: #448aff;
+	color: @textCol;
+	background-color: @accent;
 }
 
 h1, h2, h3, p, label {
-  color: #FFF;
+  color: @textCol;
 }
