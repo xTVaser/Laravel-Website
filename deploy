@@ -1,5 +1,0 @@
-server = $1
-username = $2
-
-git push
-ssh $username@$server "cd /var/www/ears; sudo git pull"

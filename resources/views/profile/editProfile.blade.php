@@ -8,6 +8,7 @@
                 <div class="panel-heading">Edit Profile</div>
 
                 <div class="panel-body">
+
                         <form class="form-horizontal">
                         <fieldset>
                         <!-- Text input-->
