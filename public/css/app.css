@@ -1,59 +1,53 @@
 body {
   background-color: #9C27B0;
 }
-
 .panel-body {
   background-color: #FFF;
 }
-
 .navbar {
   background-color: #7B1FA2;
   border-color: transparent;
 }
-
 .navbar-default .navbar-nav > li > a {
-	color: #FFF;
-
+  color: #FFF;
 }
-
 .navbar-default .navbar-nav > li > a:hover {
-	color: #448aff;
-
+  color: #448aff;
 }
-
 .panel-default > .panel-heading {
-	color: #212121;
-	background-color: #e1bee7;
-	border-color: #e1bee7;
+  color: #212121;
+  background-color: #e1bee7;
+  border-color: #e1bee7;
 }
-
 .navbar-default .navbar-brand {
-	color: #FFF;
+  color: #FFF;
 }
-
 .navbar-default .navbar-brand:hover {
   color: #448aff;
 }
-
 .navbar-default .navbar-brand a:hover {
   color: #448aff;
 }
-
 .dropdown-menu {
   background-color: #e1bee7;
   border-color: #b6b6b6;
 }
-
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
-	color: #555;
-	background-color: #e1bee7;
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  color: #555;
+  background-color: #e1bee7;
 }
-
 .btn-primary {
-	color: #fff;
-	background-color: #448aff;
+  color: #fff;
+  background-color: #448aff;
 }
-
-h1, h2, h3, p, label {
+h1,
+h2,
+h3,
+p,
+label {
   color: #FFF;
 }
+
+/*# sourceMappingURL=app.css.map */
