@@ -17,13 +17,11 @@ class ProfileController extends Controller
         return view('profile.editProfile');
     }
 
-    public function store()
+    public function update()
     {
         $input = Request::all();
         Profile::create($input);
 
         return redirect('profile.profile');
-
-
     }
 }
