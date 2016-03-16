@@ -1,11 +1,11 @@
 body {
-  background-color: #9C27B0;
+  background-color: #fdf3e7;
 }
 .panel-body {
   background-color: #FFFFFF;
 }
 .navbar {
-  background-color: #7B1FA2;
+  background-color: #c63d0f;
   border-color: transparent;
 }
 .navbar-default .navbar-nav > li > a {
@@ -16,8 +16,8 @@ body {
 }
 .panel-default > .panel-heading {
   color: #212121;
-  background-color: #E1BEE7;
-  border-color: #E1BEE7;
+  background-color: #ec5a0f;
+  border-color: #ec5a0f;
 }
 .navbar-default .navbar-brand {
   color: #FFFFFF;
@@ -29,24 +29,33 @@ body {
   color: #448AFF;
 }
 .dropdown-menu {
-  background-color: #E1BEE7;
+  background-color: #ec5a0f;
   border-color: #B6B6B6;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
   color: #555;
-  background-color: #E1BEE7;
+  background-color: #ec5a0f;
 }
 .btn-primary {
   color: #FFFFFF;
   background-color: #448AFF;
+  border-color: transparent;
+}
+.btn-primary:hover {
+  color: #FFFFFF;
+  background-color: #448ADF;
+  border-color: transparent;
 }
 h1,
 h2,
 h3,
 p,
 label {
+  color: #212121;
+}
+#panelHeader {
   color: #FFFFFF;
 }
 

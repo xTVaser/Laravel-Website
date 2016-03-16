@@ -1,11 +1,12 @@
-@darkPrim:  #7B1FA2;
-@mainPrim:  #9C27B0;
-@lightPrim: #E1BEE7;
+@darkPrim:  #c63d0f;
+@mainPrim:  #fdf3e7;
+@lightPrim: #ec5a0f;
 @textCol:   #FFFFFF;
 @accent:    #448AFF;
 @textPrim:  #212121;
 @textSec:   #727272;
 @divider:   #B6B6B6;
+@accentHov: #448ADF;
 
 body {
   background-color: @mainPrim;
@@ -61,8 +62,19 @@ body {
 .btn-primary {
 	color: @textCol;
 	background-color: @accent;
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+	color: @textCol;
+	background-color: @accentHov;
+  border-color: transparent;
 }
 
 h1, h2, h3, p, label {
+  color: @textPrim;
+}
+
+#panelHeader {
   color: @textCol;
 }
