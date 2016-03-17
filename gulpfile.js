@@ -14,3 +14,16 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('app.scss');
 });
+
+elixir(function(mix) {
+    mix.less('app.less', 'public/stylesheets/customStyle.css');
+});
+
+/* To Combine Multiple Less Files
+elixir(function(mix) {
+    mix.less([
+        'app.less',
+        'controllers.less'
+    ]);
+});
+*/

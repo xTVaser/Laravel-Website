@@ -27,7 +27,7 @@ class JobController extends Controller
     public function store()
     {
         //Creates a new job using all form input (fields set in Model as fillable (mass assignment))
-      $input = Request::all();
+        $input = Request::all();
 
         Job::create($input);
 

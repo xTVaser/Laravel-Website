@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use Request;
 use App\Profile;
 
-class ProfileController extends Controller {
+class ProfileController extends Controller
+{
+    public function view()
+    {
+        return view('profile.profile');
+    }
 
-        public function view() {
+    public function edit()
+    {
+        return view('profile.editProfile');
+    }
 
-                return view('profile.profile');
-        }
+    public function update()
+    {
+        $input = Request::all();
+        Profile::create($input);
 
-        public function edit() {
-
-                return view('profile.editProfile');
-        }
+        return redirect('profile.profile');
+    }
 }
