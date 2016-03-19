@@ -48,5 +48,11 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'faculty' => \App\Http\Middleware\FacultyMiddleware::class,
+        'chair' => \App\Http\Middleware\ChairMiddleware::class,
+        'member' => \App\Http\Middleware\MemberMiddleware::class,
+        'applicant' => \App\Http\Middleware\ApplicantMiddleware::class,
+        'elevated' => \App\Http\Middleware\AllElevatedUsersMiddleware::class,
+        'committee' => \App\Http\Middleware\HiringMemberAndChairMiddleware::class,
     ];
 }
