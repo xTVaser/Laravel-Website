@@ -16,7 +16,8 @@ class ProfileController extends Controller
 
     public function view_self() {
       $user = Auth::user();
-      return view('profile.profile')->with('profile', $user->profile());
+      $profile = Profile::find($user->id);
+      return view('profile.profile')->with('profile', $profile);
     }
 
     public function edit()
