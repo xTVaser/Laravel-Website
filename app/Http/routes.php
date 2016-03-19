@@ -42,7 +42,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/jobs',             'JobController@index');
 
         //Profile GET requests
-        Route::get('/profile',          'ProfileController@view');
+        Route::get('/profile/{id}',          'ProfileController@view');
+        Route::get('/profile',          'ProfileController@view_self');
         Route::get('/editprofile',      'ProfileController@edit');
 
         //Profile POST requests

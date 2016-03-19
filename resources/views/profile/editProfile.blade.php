@@ -13,77 +13,70 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group">
-                                {!! Form::label('firstName') !!}
-                                {!! Form::text('firstName', null, ['class' => 'form-control', 'placeholder' => 'John']) !!}
+                                {!! Form::label('First Name') !!}
+                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'John']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('middleName') !!}
-                                {!! Form::text('middleName', null, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
+                                {!! Form::label('Middle Name') !!}
+                                {!! Form::text('middle_name', null, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('lastName') !!}
-                                {!! Form::text('lastName', null, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
+                                {!! Form::label('Last Name') !!}
+                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('contactEmail') !!}
-                                {!! Form::email('contactEmail', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::label('Contact Email') !!}
+                                {!! Form::email('contact_email', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
                         </div>
 
                         <div class="form-group">
                                 <div class="input-group">
-                                        {!! Form::label('linkedin') !!}
-                                        {!! Form::text('linkedin', null, ['class' => 'form-control', 'placeholder' => 'jsmith']) !!}
+                                        {!! Form::label('LinkedIn') !!}
+                                        {!! Form::text('linkedin_link', null, ['class' => 'form-control', 'placeholder' => 'jsmith']) !!}
                                         <span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
                                 </div>
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('description') !!}
+                                {!! Form::label('Description') !!}
                                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('contactEmail') !!}
-                                {!! Form::text('contactEmail', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::label('Job Title') !!}
+                                {!! Form::text('job_title', null, ['class' => 'form-control', 'placeholder' => 'Associate Professor']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('jobTitle') !!}
-                                {!! Form::text('jobTitle', null, ['class' => 'form-control', 'placeholder' => 'Associate Professor']) !!}
-                        </div>
-
-                        <div class="form-group">
-                                {!! Form::label('company') !!}
+                                {!! Form::label('Company') !!}
                                 {!! Form::text('company', null, ['class' => 'form-control', 'placeholder' => 'Algoma University']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('department') !!}
+                                {!! Form::label('Department') !!}
                                 {!! Form::text('department', null, ['class' => 'form-control', 'placeholder' => 'Computer Science']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('birthdate') !!}
+                                {!! Form::label('Birthday') !!}
                                 {!! Form::date('birthdate', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('department') !!}
-                                {!! Form::text('department', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::label('Male') !!}
+                                {!! Form::radio('gender', 'Male', ['class' => 'form-control']) !!}
+
+                                {!! Form::label('Female') !!}
+                                {!! Form::radio('gender', 'Female', ['class' => 'form-control']) !!}
+
+                                {!! Form::label('Other') !!}
+                                {!! Form::radio('gender', 'Other', ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('Gender') !!}
-                                {!! Form::radio('gender', 'male', ['class' => 'form-control']) !!}
-                                {!! Form::radio('gender', 'female', ['class' => 'form-control']) !!}
-                                {!! Form::radio('gender', 'other', ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                                {!! Form::label('Gender') !!}
                                 {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control']) !!}
                         </div>
 

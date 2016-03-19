@@ -25,7 +25,7 @@ class User extends Authenticatable
     ];
 
     //Returns the profile of the user
-    public function getProfile()
+    public function profile()
     {
         return $this->hasOne('Profile');
     }
