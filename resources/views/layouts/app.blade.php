@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/customStyle.css" />
+    <link rel="stylesheet" href="{{ URL::asset('stylesheets/customStyle.css') }}" />
 
     <style>
         body {
