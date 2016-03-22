@@ -17,6 +17,12 @@ class JobController extends Controller
       return view('jobs.index')->with('jobs', $jobs);
     }
 
+    public function view(Request $request, $id) {
+
+            $job = Job::find($id);
+            return view('jobs.description')->with('job', $job);
+    }
+
     //Called when the user wants to create a job
     public function create()
     {

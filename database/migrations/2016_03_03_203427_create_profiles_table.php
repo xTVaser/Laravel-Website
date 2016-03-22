@@ -25,6 +25,7 @@ class CreateProfilesTable extends Migration
             $table->date('birthdate'); //Birthdate of the user
             $table->string('contact_email'); //Short description the user posts about themselves
             $table->string('linkedin_link'); //Link to the user's LinkedIn profile
+            $table->timestamps(); //Timestamps for profile
         });
     }
 

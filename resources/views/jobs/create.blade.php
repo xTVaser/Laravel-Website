@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container">
   <h1>Create New Job</h1><hr/>
 
@@ -20,7 +20,7 @@
     {!! Form::textarea('qualifications', null, ['class' => 'form-control']) !!}
   </div>
 
-  <div class="form-group">nt 
+  <div class="form-group">
     {!! Form::label('salary') !!}
     {!! Form::number('salary', null, ['class' => 'form-control']) !!}
   </div>
