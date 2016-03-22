@@ -11,7 +11,7 @@
 |
 */
 
-//Temporary Route
+//Temporary Routes
 Route::get('/mail-config',  function () {
     return config('mail');
 });
@@ -40,7 +40,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //EVERYONES routes------------------------
 
         //Jobs GET requests
-        Route::get('/jobs',             'JobController@index');
+        Route::get('/jobs',                     'JobController@index');
+        Route::get('/jobs/description/{id}',    'JobController@view');
 
         //Profile GET requests
         Route::get('/profile/{id}',     'ProfileController@view');
