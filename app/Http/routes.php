@@ -11,31 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Temporary Routes
+Route::get('/mail-config',  function () {
+    return config('mail');
 });
 
-Route::get('/editprofile', function () {
-    return view('profile.editProfile');
-});
-Route::get('/profile', function () {
-    return view('profile.profile');
-});
-
-Route::get('/jobs', 'JobController@index');
-
-Route::get('/jobs/create', 'JobController@create');
-Route::post('/jobs/create', 'JobController@store');
-
-Route::get('/createaccount', function () {
-    return view('admin.createAccount');
-});
-Route::get('/applicants', function () {
-    return view('jobs.applicants');
-});
-Route::get('/editprofile', function () {
-    return view('profile.editProfile');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +28,76 @@ Route::get('/editprofile', function () {
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
+    Route::get('/home', array('before' => 'auth', 'uses' => 'HomeController@index'));
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+
+        //EVERYONES routes------------------------
+
+        //Jobs GET requests
+        Route::get('/jobs',                     'JobController@index');
+        Route::get('/jobs/description/{id}',    'JobController@view');
+
+        //Profile GET requests
+        Route::get('/profile/{id}',     'ProfileController@view');
+        Route::get('/profile',          'ProfileController@view_self');
+        Route::get('/editprofile',      'ProfileController@edit');
+
+        //Profile POST requests
+        Route::post('/editprofile',     'ProfileController@update');
+
+        //----------------------------------------
+
+        //Applicant Pages
+        Route::group(['middleware' => 'applicant'], function () {
+
+                //My Applications Page
+                Route::get('/my-applications',  'ApplicationController@viewOwn');
+        });
+
+        //All Elevated Users
+        Route::group(['middleware' => 'elevated'], function () {
+
+                //Applications
+                Route::get('/application/{id}',  'ApplicationController@view');
+        });
+
+        //HIRING MEMBER and HIRING CHAIR Pages
+        Route::group(['middleware' => 'committee'], function () {
+
+                //Create Account
+                Route::get('/createaccount', function () { return view('admin.createAccount'); });
+
+                //Jobs GET requests
+                Route::get('/jobs/create',      'JobController@create');
+                //Jobs POST requests
+                Route::post('/jobs/create',     'JobController@store');
+
+        });
+
+        //FACULTY Only Pages//
+        Route::group(['middleware' => 'faculty'], function () {
+
+                //Can view others peoples profiles!
+
+        });
+
+        //HIRING MEMBER Only Pages//
+        Route::group(['middleware' => 'member'], function () {
+
+                //Can view others peoples profiles!
+
+        });
+
+        //HIRING CHAIR Only Pages//
+        Route::group(['middleware' => 'chair'], function () {
+
+                //Can view others peoples profiles!
+
+        });
 });

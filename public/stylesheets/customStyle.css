@@ -1,0 +1,71 @@
+* {
+  border-radius: 0 !important;
+}
+body {
+  background-color: #fdf3e7;
+}
+.panel-body {
+  background-color: #FFFFFF;
+}
+.navbar {
+  background-color: #c63d0f;
+  border-color: transparent;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
+  font-family: 'Rubik';
+  font-weight: 400;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #727272;
+}
+.panel-default > .panel-heading {
+  color: #212121;
+  background-color: #ec5a0f;
+  border-color: #ec5a0f;
+  font-weight: 700;
+}
+.navbar-default .navbar-brand {
+  color: #FFFFFF;
+  font-family: 'Rubik';
+  font-weight: 700;
+}
+.navbar-default .navbar-brand:hover {
+  color: #727272;
+  font-family: 'Rubik';
+}
+.navbar-default .navbar-brand a:hover {
+  color: #558AFF;
+}
+.dropdown-menu {
+  background-color: #ec5a0f;
+  border-color: #B6B6B6;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  color: #555;
+  background-color: #ec5a0f;
+}
+.btn-primary {
+  color: #FFFFFF;
+  background-color: #558AFF;
+  border-color: transparent;
+}
+.btn-primary:hover {
+  color: #FFFFFF;
+  background-color: #448ADF;
+  border-color: transparent;
+}
+h1,
+h2,
+h3,
+p,
+label {
+  color: #212121;
+}
+#panelHeader {
+  color: #FFFFFF;
+}
+
+/*# sourceMappingURL=customStyle.css.map */

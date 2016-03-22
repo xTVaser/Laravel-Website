@@ -7,17 +7,24 @@
 
     <title>E.A.R.S.</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon/favicon.png">
+
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Scripts -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ URL::asset('stylesheets/customStyle.css') }}" />
 
     <style>
         body {
-            font-family: 'Lato';
+            font-family: 'Open Sans', sans-serif;
         }
 
         .fa-btn {
@@ -39,7 +46,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     Employee Application Review System
                 </a>
             </div>
@@ -47,6 +54,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/jobs')}}">Jobs</a></li>
+                        <li><a href="{{ url('/jobs/create')}}">Create Job</a></li>
+                        <li><a href="{{ url('/applicants')}}">Applicants</a></li>
+                        <li><a href="{{ url('/createaccount')}}">Create Account</a></li>
+                        <li><a href="{{ url('/mail-config')}}">Email Testing</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -62,8 +74,13 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>View Profile</a></li>
                                 <li><a href="{{ url('/editprofile') }}"><i class="fa fa-btn fa-pencil-square-o"></i>Edit Profile</a></li>
                                 <li><a href="{{ url('/logout') }} "><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/my-applications')}} "><i class="fa fa-btn fa-folder-open"></i>My Applications</a></li>
+                                <!-- This Notification button should check if the user has notifications. -->
+                                <!-- SCOPE <li><a href="{{ url('/notifications')}} "><i class="fa fa-btn fa-envelope"></i>Notifications</a></li> CREEP -->
+                                <!-- If they do we make a glowy thing or something, otherwise normal -->
                             </ul>
                         </li>
                     @endif

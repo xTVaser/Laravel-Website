@@ -1,0 +1,88 @@
+@darkPrim:  #c63d0f;
+@mainPrim:  #fdf3e7;
+@lightPrim: #ec5a0f;
+@textCol:   #FFFFFF;
+@accent:    #558AFF;
+@textPrim:  #212121;
+@textSec:   #727272;
+@divider:   #B6B6B6;
+@accentHov: #448ADF;
+
+* {
+  border-radius: 0 !important;
+}
+
+body {
+  background-color: @mainPrim;
+}
+
+.panel-body {
+  background-color: @textCol;
+}
+
+.navbar {
+  background-color: @darkPrim;
+  border-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: @textCol;
+        font-family: 'Rubik';
+        font-weight: 400;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: @textSec;
+}
+
+.panel-default > .panel-heading {
+	color: @textPrim;
+	background-color: @lightPrim;
+	border-color: @lightPrim;
+        font-weight: 700;
+}
+
+.navbar-default .navbar-brand {
+	color: @textCol;
+        font-family: 'Rubik';
+        font-weight: 700;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: @textSec;
+  font-family: 'Rubik';
+}
+
+.navbar-default .navbar-brand a:hover {
+  color: @accent;
+}
+
+.dropdown-menu {
+  background-color: @lightPrim;
+  border-color: @divider;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+	color: #555;
+	background-color: @lightPrim;
+}
+
+.btn-primary {
+	color: @textCol;
+	background-color: @accent;
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+	color: @textCol;
+	background-color: @accentHov;
+  border-color: transparent;
+}
+
+h1, h2, h3, p, label {
+  color: @textPrim;
+}
+
+#panelHeader {
+  color: @textCol;
+}
