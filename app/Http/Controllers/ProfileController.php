@@ -16,8 +16,7 @@ class ProfileController extends Controller
 
     public function view_self() {
       $user = Auth::user();
-      $profile = Profile::find($user->id);
-      return view('profile.profile')->with('profile', $profile);
+      return view('profile.profile')->with('profile', $user->profile);
     }
 
     public function edit()
@@ -25,19 +24,28 @@ class ProfileController extends Controller
         return view('profile.editProfile');
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        //Get profile data
-        $input = Request::all();
-
-        //Create new profile from data
-        $profile = Profile::create($input);
-
         //Get current logged in user
         $user = Auth::user();
 
-        //Associate the new profile with their account
-        $user->profile()->associate($profile);
+        //Update values on user's profile
+        $user->profile->first_name = $request->input('first_name');
+        $user->profile->middle_name = $request->input('middle_name');
+        $user->profile->last_name = $request->input('last_name');
+        $user->profile->gender = $request->input('gender');
+        $user->profile->job_title = $request->input('job_title');
+        $user->profile->department = $request->input('department');
+        $user->profile->company = $request->input('company');
+        $user->profile->description = $request->input('description');
+        $user->profile->birthdate = $request->input('birthdate');
+        $user->profile->contact_email = $request->input('contact_email');
+        $user->profile->linkedin_link = $request->input('linkedin_link');
+
+        //Save user's profile
+        $user->profile->save();
+
+
 
         //Redirect to view their profile
         return redirect('/profile');
