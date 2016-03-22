@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                                 {!! Form::label('description') !!}
-                                {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Tell us about yourself!']) !!}
                         </div>
 
                         <div class="form-group">
