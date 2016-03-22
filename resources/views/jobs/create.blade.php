@@ -20,7 +20,7 @@
     {!! Form::textarea('qualifications', null, ['class' => 'form-control']) !!}
   </div>
 
-  <div class="form-group">nt
+  <div class="form-group">
     {!! Form::label('salary') !!}
     {!! Form::number('salary', null, ['class' => 'form-control']) !!}
   </div>

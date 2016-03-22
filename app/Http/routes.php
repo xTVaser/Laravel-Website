@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
     Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
+    Route::get('/home', array('before' => 'auth', 'uses' => 'HomeController@index'));
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -49,21 +50,20 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //Profile POST requests
         Route::post('/editprofile',     'ProfileController@update');
 
-        //My Applications Page
-        Route::get('/my-applications', function () { return view('applications.my-applications'); });
-
         //----------------------------------------
 
         //Applicant Pages
         Route::group(['middleware' => 'applicant'], function () {
 
+                //My Applications Page
+                Route::get('/my-applications',  'ApplicationController@viewOwn');
         });
 
         //All Elevated Users
         Route::group(['middleware' => 'elevated'], function () {
 
                 //Applications
-                Route::get('/applicants',       'ApplicationController@view');
+                Route::get('/application/{id}',  'ApplicationController@view');
         });
 
         //HIRING MEMBER and HIRING CHAIR Pages
