@@ -21,7 +21,6 @@ class JobController extends Controller
 
             $job = Job::find($id);
             return view('jobs.description')->with('job', $job);
-
     }
 
     //Called when the user wants to create a job

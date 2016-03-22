@@ -8,7 +8,7 @@
                 <div class="panel-heading">Applicant List</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    Show profile of the user, whatever
                 </div>
             </div>
         </div>
