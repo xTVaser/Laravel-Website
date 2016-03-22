@@ -45,8 +45,6 @@ class ProfileController extends Controller
         //Save user's profile
         $user->profile->save();
 
-
-
         //Redirect to view their profile
         return redirect('/profile');
     }
