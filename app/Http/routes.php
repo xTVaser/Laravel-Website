@@ -79,8 +79,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
                 //Jobs GET requests
                 Route::get('/jobs/create',      'JobController@create');
+                Route::get('/jobs/edit/{id}',   'JobController@edit');
                 //Jobs POST requests
                 Route::post('/jobs/create',     'JobController@store');
+                Route::post('jobs/edit/{id}',   'JobController@update');
+
+
 
         });
 

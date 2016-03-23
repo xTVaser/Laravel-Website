@@ -39,4 +39,15 @@ class JobController extends Controller
 
         return redirect('jobs');
     }
+
+    public function edit(Request $request, $id) {
+
+            $job = Job::find($id);
+            return view('jobs.edit')->with('job', $job);
+    }
+
+    public function update(Request $request) {
+
+            //Not Complete Obviously
+    }
 }
