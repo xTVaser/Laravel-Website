@@ -50,7 +50,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/editprofile',              'ProfileController@edit');
 
         //Profile POST requests
-        Route::post('/editprofile',             'ProfileController@update');
+        Route::post('/editprofile',     'ProfileController@update');
+
+        //My Applications Page
+        Route::get('/my-applications', function () { return view('applications.my-applications'); });
 
         //----------------------------------------
 

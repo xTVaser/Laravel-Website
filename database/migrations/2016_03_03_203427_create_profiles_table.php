@@ -14,6 +14,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id'); //Uniquely identifies the profile
+            $table->integer('user_id');
             $table->string('first_name'); //First Name of the user associated with the profile
             $table->string('middle_name'); //Middle Name of the user associated with the profile
             $table->string('last_name'); //Last Name of the user associated with the profile
