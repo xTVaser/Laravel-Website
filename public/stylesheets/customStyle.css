@@ -1,6 +1,12 @@
 * {
   border-radius: 0 !important;
 }
+a {
+  color: #FFFFFF;
+}
+a:hover {
+  color: #727272;
+}
 body {
   background-color: #fdf3e7;
 }
