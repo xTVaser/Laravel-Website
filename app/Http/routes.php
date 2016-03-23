@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
     Route::get('/home', array('before' => 'auth', 'uses' => 'HomeController@index'));
+    
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {

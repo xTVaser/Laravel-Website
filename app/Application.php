@@ -8,12 +8,12 @@ class Application extends Model
 {
     //Gets the job associated with this Application
     public function getJob() {
-      return $this->belongsTo('Job');
+      return $this->hasOne('Job');
     }
 
     //Gets the user that the application belongs to
     public function getUser() {
-      return $this->belongsTo('User');
+      return $this->hasOne('User');
     }
 
     //Gets comments associated with the application

@@ -9,6 +9,8 @@
 
         This page needs to have the full information for the job.<br>
 
+        {{ $job->title }}
+
 
         Button for applying for only applicants.<br>
 
