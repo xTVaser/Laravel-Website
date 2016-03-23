@@ -18,5 +18,12 @@ class ApplicationController extends Controller {
                 return view('applications.my-applications');
         }
 
+        public function viewAll() {
 
+                //Get all jobs from the database
+                $applications = Application::all();
+
+                //Return this data to the jobs view
+                return view('applications.index')->with('applications', $applications);
+        }
 }

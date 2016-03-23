@@ -33,7 +33,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
     Route::get('/home', array('before' => 'auth', 'uses' => 'HomeController@index'));
-    
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -45,12 +45,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/jobs/description/{id}',    'JobController@view');
 
         //Profile GET requests
-        Route::get('/profile/{id}',     'ProfileController@view');
-        Route::get('/profile',          'ProfileController@view_self');
-        Route::get('/editprofile',      'ProfileController@edit');
+        Route::get('/profile/{id}',             'ProfileController@view');
+        Route::get('/profile',                  'ProfileController@view_self');
+        Route::get('/editprofile',              'ProfileController@edit');
 
         //Profile POST requests
-        Route::post('/editprofile',     'ProfileController@update');
+        Route::post('/editprofile',             'ProfileController@update');
 
         //----------------------------------------
 
@@ -58,14 +58,17 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::group(['middleware' => 'applicant'], function () {
 
                 //My Applications Page
-                Route::get('/my-applications',  'ApplicationController@viewOwn');
+                Route::get('/my-applications',          'ApplicationController@viewOwn');
         });
 
         //All Elevated Users
         Route::group(['middleware' => 'elevated'], function () {
 
                 //Applications
-                Route::get('/application/{id}',  'ApplicationController@view');
+                Route::get('/applications/{id}',        'ApplicationController@view');
+
+                //Applications
+                Route::get('/applications/',            'ApplicationController@viewAll');
         });
 
         //HIRING MEMBER and HIRING CHAIR Pages

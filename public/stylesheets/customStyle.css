@@ -9,6 +9,11 @@ a:hover {
 }
 body {
   background-color: #fdf3e7;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+.fa-btn {
+  margin-right: 6px;
 }
 .panel-body {
   background-color: #FFFFFF;
@@ -30,6 +35,10 @@ body {
   background-color: #ec5a0f;
   border-color: #ec5a0f;
   font-family: 'Exo';
+  font-weight: 700;
+}
+.panel-body a {
+  color: #0a7cf4;
   font-weight: 700;
 }
 .navbar-default .navbar-brand {

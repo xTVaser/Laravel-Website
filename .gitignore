@@ -4,7 +4,6 @@
 Homestead.yaml
 Homestead.json
 .env
-.lock
 /.idea
 composer.lock
-.css.map
+*.css.map
