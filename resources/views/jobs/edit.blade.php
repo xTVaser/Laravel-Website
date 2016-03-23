@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-  <h1>Create New Job</h1><hr/>
+  <h1>Edit Job</h1><hr/>
 
   {!! Form::open() !!}
   {!! csrf_field() !!}

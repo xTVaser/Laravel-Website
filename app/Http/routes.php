@@ -11,7 +11,7 @@
 |
 */
 
-//Temporary Route
+//Temporary Routes
 Route::get('/mail-config',  function () {
     return config('mail');
 });
@@ -32,6 +32,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
     Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
+    Route::get('/home', array('before' => 'auth', 'uses' => 'HomeController@index'));
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -39,16 +41,16 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //EVERYONES routes------------------------
 
         //Jobs GET requests
-        Route::get('/jobs',             'JobController@index');
+        Route::get('/jobs',                     'JobController@index');
+        Route::get('/jobs/description/{id}',    'JobController@view');
 
         //Profile GET requests
-        Route::get('/profile/{id}',     'ProfileController@view');
-        Route::get('/profile',          'ProfileController@view_self');
-        Route::get('/editprofile',      'ProfileController@edit');
+        Route::get('/profile/{id}',             'ProfileController@view');
+        Route::get('/profile',                  'ProfileController@view_self');
+        Route::get('/editprofile',              'ProfileController@edit');
 
         //Profile POST requests
         Route::post('/editprofile',     'ProfileController@update');
-        Route::post('/profile/create',  'ProfileController@store');
 
         //My Applications Page
         Route::get('/my-applications', function () { return view('applications.my-applications'); });
@@ -58,13 +60,18 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //Applicant Pages
         Route::group(['middleware' => 'applicant'], function () {
 
+                //My Applications Page
+                Route::get('/my-applications',          'ApplicationController@viewOwn');
         });
 
         //All Elevated Users
         Route::group(['middleware' => 'elevated'], function () {
 
                 //Applications
-                Route::get('/applicants',       'ApplicationController@view');
+                Route::get('/applications/{id}',        'ApplicationController@view');
+
+                //Applications
+                Route::get('/applications/',            'ApplicationController@viewAll');
         });
 
         //HIRING MEMBER and HIRING CHAIR Pages
@@ -75,8 +82,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
                 //Jobs GET requests
                 Route::get('/jobs/create',      'JobController@create');
+                Route::get('/jobs/edit/{id}',   'JobController@edit');
                 //Jobs POST requests
                 Route::post('/jobs/create',     'JobController@store');
+                Route::post('jobs/edit/{id}',   'JobController@update');
+
+
 
         });
 

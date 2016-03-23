@@ -12,7 +12,8 @@
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700|Arimo:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Exo:400,900,700,500,300' rel='stylesheet' type='text/css'>
 
     <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
@@ -21,15 +22,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('stylesheets/customStyle.css') }}" />
 
-    <style>
-        body {
-            font-family: 'Ubuntu';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
@@ -55,7 +47,7 @@
                 <ul class="nav navbar-nav">
                         <li><a href="{{ url('/jobs')}}">Jobs</a></li>
                         <li><a href="{{ url('/jobs/create')}}">Create Job</a></li>
-                        <li><a href="{{ url('/applicants')}}">Applicants</a></li>
+                        <li><a href="{{ url('/applications')}}">Applicants</a></li>
                         <li><a href="{{ url('/createaccount')}}">Create Account</a></li>
                         <li><a href="{{ url('/mail-config')}}">Email Testing</a></li>
                 </ul>
