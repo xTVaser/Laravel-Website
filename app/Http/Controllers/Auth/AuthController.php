@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use App\Profile as Profile;
+
 class AuthController extends Controller
 {
     /*
@@ -63,11 +65,29 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+      $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'flag' => 0,
         ]);
+
+        //Create new profile and associate it with the user
+        $profile = new Profile;
+        $profile->user_id = $user->id;
+        $profile->first_name = "Free";
+        $profile->middle_name = "";
+        $profile->last_name = "Loader";
+        $profile->gender = "Other";
+        $profile->job_title = "Freeloader";
+        $profile->department = "Freeloading";
+        $profile->company = "Freeloaders Inc.";
+        $profile->birthdate = "1970-01-01";
+        $profile->contact_email = "freeloader@freeloaders.com";
+        $profile->linkedin_link = "freeloader1";
+
+        $profile->save();
+
+        return $user;
     }
 }

@@ -48,6 +48,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
         //Profile POST requests
         Route::post('/editprofile',     'ProfileController@update');
+        Route::post('/profile/create',  'ProfileController@store');
 
         //My Applications Page
         Route::get('/my-applications', function () { return view('applications.my-applications'); });
