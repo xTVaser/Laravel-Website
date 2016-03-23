@@ -12,7 +12,7 @@
                 @foreach($jobs as $job)
                 <!-- Do not Display Jobs that are not available currently -->
                   @if($job->closing_date > (\Carbon\Carbon::now()))
-                  <h4><a href="{{ url('/jobs/description/JOB ID HERE')}}">{{ $job->title }}</a></h4>
+                  <h4><a href="{{ url('/jobs/description/')}}/{{ $job->id }}">{{ $job->title }}</a></h4>
                   <p style="text-indent: 1em;">
                     <b>Job Description:</b>
                   </p>
