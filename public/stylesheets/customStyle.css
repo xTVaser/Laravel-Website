@@ -5,7 +5,7 @@ a {
   color: #FFFFFF;
 }
 a:hover {
-  color: #727272;
+  color: #929292;
 }
 body {
   background-color: #fdf3e7;
@@ -19,7 +19,7 @@ body {
 }
 .navbar-default .navbar-nav > li > a {
   color: #FFFFFF;
-  font-family: 'Rubik';
+  font-family: 'Exo';
   font-weight: 400;
 }
 .navbar-default .navbar-nav > li > a:hover {
@@ -29,16 +29,17 @@ body {
   color: #212121;
   background-color: #ec5a0f;
   border-color: #ec5a0f;
+  font-family: 'Exo';
   font-weight: 700;
 }
 .navbar-default .navbar-brand {
   color: #FFFFFF;
-  font-family: 'Rubik';
-  font-weight: 700;
+  font-family: 'Exo';
+  font-weight: 900;
 }
 .navbar-default .navbar-brand:hover {
   color: #929292;
-  font-family: 'Rubik';
+  font-family: 'Exo';
 }
 .navbar-default .navbar-brand a:hover {
   color: #558AFF;

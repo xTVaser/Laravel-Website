@@ -13,7 +13,7 @@
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Rubik:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Exo:400,900,700,500,300' rel='stylesheet' type='text/css'>
 
     <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
@@ -25,6 +25,7 @@
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
         }
 
         .fa-btn {
