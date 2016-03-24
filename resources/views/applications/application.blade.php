@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading" id="panelHeader">Applicant List</div>
+                <div class="panel-heading" id="panelHeader">Individual Application</div>
 
                 <div class="panel-body">
                     Show profile of the user, whatever

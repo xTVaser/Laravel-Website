@@ -18,13 +18,13 @@
                     <p>{{ $job->salary }}</p>
 
                     <!-- If applicant -->                 <!-- Will, add the link to the corresponding application page here -->
-                    <btn class="btn btn-primary"><a href="application page link goes here dont fucking click this you retard">Apply</a></btn>
+                    <btn class="btn btn-primary"><a href="{{ url('/apply/')}}/{{ $job->id }}">Apply</a></btn>
                     <!-- Elsif member/chair -->
                     <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
 
                     <!-- Links to Applications. Should only be shown to faculty/chair members -->
                     <h3>Current Applications</h3>
-                    <a href="{{ url('/application/APPLICATION ID HERE')}}">Application #1</a>
+                    <a href="{{ url('/applications/APPLICATION ID HERE')}}">Application #1</a>
             </div>
           </div>
         </div>

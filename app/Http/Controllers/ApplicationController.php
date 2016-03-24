@@ -6,6 +6,7 @@ use Request;
 use Auth;
 
 use App\Application as Application;
+use App\Job as Job;
 
 class ApplicationController extends Controller {
 
@@ -32,7 +33,7 @@ class ApplicationController extends Controller {
 
         public function create($id) {
           $job = Job::find($id);
-          return view('applications.create')->with('job', $job);
+          return view('applications.apply')->with('job', $job);
         }
 
         public function store() {

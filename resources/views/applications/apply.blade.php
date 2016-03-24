@@ -14,7 +14,7 @@
                         <div class="form-group">
                           {!! Form::file('resume', null, ['class' => 'btn btn-primary form-control']) !!}
                         </div>
-                        
+
                         <div class="form-group">
                           <!-- this is going to be a hidden field that takes in the job object.
                           when the application is submitted this is sent with it so that the system knows what job the person is applying for.
@@ -27,7 +27,7 @@
 
 
 
-                        {!! Form:close() !!}
+                        {!! Form::close() !!}
                 </div>
             </div>
         </div>
