@@ -76,8 +76,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //HIRING MEMBER and HIRING CHAIR Pages
         Route::group(['middleware' => 'committee'], function () {
 
-                //Create Account
+                //Create Account GET
                 Route::get('/createaccount', function () { return view('admin.createAccount'); });
+                //Create Account POST
+                Route::post('/createaccount',   'Auth\AuthController@register');
 
                 //Jobs GET requests
                 Route::get('/jobs/create',      'JobController@create');
