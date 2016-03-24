@@ -73,6 +73,12 @@ body {
   background-color: #448ADF;
   border-color: transparent;
 }
+.btn a {
+  color: #FFFFFF;
+}
+.btn a:hover {
+  text-decoration: none;
+}
 h1,
 h2,
 h3,
