@@ -14,19 +14,19 @@
 
                   <div class="form-group">
                     {!! Form::label('Email') !!}
-                    {!! Form::email('Email', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                   </div>
 
 
                   <!-- 0 = default user, 1 = faculty, 2 = committee member, 3 = committee chair -->
                   <div class="form-group">
                     {!! Form::label('Account Type:') !!}
-
-                    <br>
-
-                    {!! Form::label('Default') !!}
-                    {!! Form::radio('flag', 0, ['class' => 'form-control']) !!}
-
                     {!! Form::label('Faculty') !!}
                     {!! Form::radio('flag', 1, ['class' => 'form-control']) !!}
 

@@ -79,7 +79,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 //Create Account GET
                 Route::get('/createaccount', function () { return view('admin.createAccount'); });
                 //Create Account POST
-                Route::post('/createaccount',   'Auth\AuthController@register');
+                Route::post('/createaccount',   'Auth\AuthController@createFromAdmin');
 
                 //Jobs GET requests
                 Route::get('/jobs/create',      'JobController@create');

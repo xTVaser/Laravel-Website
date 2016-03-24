@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Log;
+
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 use App\Profile as Profile;
 
@@ -64,7 +67,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-      $user = User::create([
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'flag' => 0,
@@ -87,5 +90,25 @@ class AuthController extends Controller
         $profile->save();
 
         return $user;
+    }
+
+    protected function createFromAdmin(Request $request) {
+
+            $this->validate($request, [
+                    'email' => 'required|unique:users|max:255',
+                    'flag' => 'required',
+            ]);
+
+            $password = md5(time()); //Make a random password
+
+            //Send off email with password and such
+
+            $user = User::create([
+                'email' => $request['email'],
+                'password' => bcrypt($password),
+                'flag' => $request['flag'],
+            ]);
+
+            return $user;
     }
 }
