@@ -33,6 +33,6 @@ class User extends Authenticatable
     //Returns applications that the user has submitted
     public function getApplications()
     {
-        return $this->hasMany('Application');
+        return $this->hasMany('App\Application');
     }
 }

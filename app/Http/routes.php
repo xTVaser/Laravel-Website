@@ -45,12 +45,11 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/jobs/description/{id}',    'JobController@view');
 
         //Profile GET requests
-        Route::get('/profile/{id}',             'ProfileController@view');
         Route::get('/profile',                  'ProfileController@view_self');
         Route::get('/editprofile',              'ProfileController@edit');
 
         //Profile POST requests
-        Route::post('/editprofile',     'ProfileController@update');
+        Route::post('/editprofile',             'ProfileController@update');
 
         //My Applications Page
         Route::get('/my-applications', function () { return view('applications.my-applications'); });
@@ -67,10 +66,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //All Elevated Users
         Route::group(['middleware' => 'elevated'], function () {
 
-                //Applications
-                Route::get('/applications/{id}',        'ApplicationController@view');
+                Route::get('/profile/{id}',             'ProfileController@view');
 
                 //Applications
+                Route::get('/applications/{id}',        'ApplicationController@view');
                 Route::get('/applications/',            'ApplicationController@viewAll');
         });
 
@@ -86,8 +85,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 //Jobs POST requests
                 Route::post('/jobs/create',     'JobController@store');
                 Route::post('jobs/edit/{id}',   'JobController@update');
-
-
 
         });
 

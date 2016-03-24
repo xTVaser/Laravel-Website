@@ -18,6 +18,6 @@ class Application extends Model
 
     //Gets comments associated with the application
     public function getComments() {
-      return $this->hasMany('Comment');
+      return $this->hasMany('App\Comment');
     }
 }

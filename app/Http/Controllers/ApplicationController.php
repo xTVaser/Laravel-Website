@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Request;
-use App\Application;
+use Auth;
+
+use App\Application as Application;
 
 class ApplicationController extends Controller {
 
@@ -15,7 +17,8 @@ class ApplicationController extends Controller {
 
         public function viewOwn() {
 
-                return view('applications.my-applications');
+                $applications = Auth::user()->getApplications();
+                return view('applications.my-applications')->with('applications', $applications);
         }
 
         public function viewAll() {
