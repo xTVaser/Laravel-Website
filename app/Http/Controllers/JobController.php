@@ -46,8 +46,17 @@ class JobController extends Controller
             return view('jobs.edit')->with('job', $job);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request, $id) {
 
-            //Not Complete Obviously
+            $job = Job::find($id);
+
+            $input = Request::all();
+
+            //Save user's profile
+            $job->update($input);
+            $job->save();
+
+            //Redirect to view their profile
+            return redirect()->action('JobController@view', [$id]);
     }
 }

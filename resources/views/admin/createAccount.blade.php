@@ -39,6 +39,7 @@
                     {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control']) !!}
                   </div>
 
+                  {!! Form::close() !!}
                 </div>
             </div>
         </div>
