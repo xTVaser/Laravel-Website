@@ -18,6 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->integer('user_id');
             $table->date('date_posted');
             $table->enum('status', ['Pending', 'Accepted', 'Rejected']);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
