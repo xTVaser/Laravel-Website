@@ -27,7 +27,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading" id="panelHeader">Job Name</div>
                   <div class="panel-body">
-                        <btn class="btn btn-primary">Submit Application</btn>
+                        <a href="{{ url('/apply/')}}/{{ $job->id }}" class="btn btn-primary">Submit Application</a>
 
                         <a href="{{ url('/jobs/edit/')}}/{{ $job->id}}" class="btn btn-warning">Edit Job</a>
                   </div>

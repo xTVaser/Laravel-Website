@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
+            $table->integer('flag'); // 0 = default user, 1 = faculty, 2 = committee member, 3 = committee chair
             $table->timestamps();
         });
     }
