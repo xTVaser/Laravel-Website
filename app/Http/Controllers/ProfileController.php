@@ -23,7 +23,8 @@ class ProfileController extends Controller
 
     public function edit()
     {
-        return view('profile.editProfile');
+            $profile = Auth::user()->profile;
+        return view('profile.editProfile')->with('profile', $profile);
     }
 
     public function create()

@@ -14,7 +14,7 @@
 
                         <div class="form-group">
                                 {!! Form::label('First Name') !!}
-                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'John']) !!}
+                                {!! Form::text('first_name', $profile->first_name, ['class' => 'form-control', 'placeholder' => 'John']) !!}
                         </div>
 
                         <div class="form-group">
@@ -41,13 +41,8 @@
                         </div>
 
                         <div class="form-group">
-<<<<<<< HEAD
-                                {!! Form::label('description') !!}
-                                {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Tell us about yourself!']) !!}
-=======
                                 {!! Form::label('Description') !!}
                                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
->>>>>>> dev
                         </div>
 
                         <div class="form-group">
