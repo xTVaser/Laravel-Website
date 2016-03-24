@@ -73,6 +73,12 @@ body {
   background-color: #448ADF;
   border-color: transparent;
 }
+.btn-warning a {
+  color: #FFFFFF;
+}
+.btn-warning a:hover {
+  text-decoration: none;
+}
 h1,
 h2,
 h3,

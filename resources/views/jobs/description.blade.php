@@ -29,7 +29,7 @@
                   <div class="panel-body">
                         <btn class="btn btn-primary">Submit Application</btn>
 
-                        <a href="{{ url('/jobs/edit/')}}/{{ $job->id}}" class="btn btn-warning">Edit Job</a>
+                        <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
                   </div>
                 </div>
         </div>
