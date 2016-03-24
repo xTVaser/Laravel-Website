@@ -29,4 +29,16 @@ class ApplicationController extends Controller {
                 //Return this data to the jobs view
                 return view('applications.index')->with('applications', $applications);
         }
+
+        public function create() {
+          return view('applications.create');
+        }
+
+        public function store() {
+          $input = Request::all();
+
+          Application::create($input);
+
+          return redirect('/my-applications');
+        }
 }

@@ -6,18 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    //Gets the job associated with this Application
-    public function getJob() {
-      return $this->hasOne('Job');
-    }
+  protected $fillable = [
+    'date_posted', 'job_id', 'created_at', 'updated_at',
+  ];
 
-    //Gets the user that the application belongs to
-    public function getUser() {
-      return $this->hasOne('User');
-    }
+  //Gets the job associated with this Application
+  public function getJob() {
+    return $this->hasOne('App\Job');
+  }
 
-    //Gets comments associated with the application
-    public function getComments() {
-      return $this->hasMany('App\Comment');
-    }
+  //Gets the user that the application belongs to
+  public function getUser() {
+    return $this->hasOne('App\User');
+  }
+
+  //Gets comments associated with the application
+  public function getComments() {
+    return $this->hasMany('App\Comment');
+  }
 }
