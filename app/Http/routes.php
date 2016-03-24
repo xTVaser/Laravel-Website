@@ -61,6 +61,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
                 //My Applications Page
                 Route::get('/my-applications',          'ApplicationController@viewOwn');
+                Route::get('/apply/{id}', 'ApplicationController@create');
+                Route::post('/apply', 'ApplicationController@store');
         });
 
         //All Elevated Users
