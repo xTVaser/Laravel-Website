@@ -24,4 +24,12 @@ class Application extends Model
   public function getComments() {
     return $this->hasMany('App\Comment');
   }
+
+  public function joinJobsAndApplications() {
+
+          return DB::table('jobs')
+                        ->leftJoin('jobs', 'jobs.id', '=', 'job_id')
+                        ->select('users.*', 'jobs.*')
+                        ->get();
+  }
 }

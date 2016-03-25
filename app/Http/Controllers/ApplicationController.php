@@ -26,9 +26,10 @@ class ApplicationController extends Controller {
 
                 //Get all jobs from the database
                 $applications = Application::all();
+                $jobs = Job::all();
 
                 //Return this data to the jobs view
-                return view('applications.index')->with('applications', $applications);
+                return view('applications.index')->with('applications', $applications)->with('jobs', $jobs);
         }
 
         public function create($id) {
@@ -41,6 +42,8 @@ class ApplicationController extends Controller {
 
           $application = Application::create($input);
           $application->user_id = Auth::user()->id;
+
+          $application->save();
 
           return redirect('/my-applications');
         }

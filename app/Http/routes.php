@@ -11,11 +11,6 @@
 |
 */
 
-//Temporary Routes
-Route::get('/mail-config',  function () {
-    return config('mail');
-});
-
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +46,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //Profile POST requests
         Route::post('/editprofile',             'ProfileController@update');
 
-        //My Applications Page
-        Route::get('/my-applications', function () { return view('applications.my-applications'); });
-
         //----------------------------------------
 
         //Applicant Pages
@@ -62,7 +54,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 //My Applications Page
                 Route::get('/my-applications',          'ApplicationController@viewOwn');
                 Route::get('/apply/{id}',               'ApplicationController@create');
-                Route::post('/apply',                   'ApplicationController@store');
+                Route::post('/apply/{id}',              'ApplicationController@store');
         });
 
         //All Elevated Users

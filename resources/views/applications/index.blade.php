@@ -14,7 +14,7 @@
         <div class="panel-body">
                 @foreach($applications as $application)
 
-                  <h4><a href="{{ url('/application/APPLCATION ID HERE')}}">{{ $job->title }}</a></h4>
+                  <h4><a href="{{ url('/application/APPLCATION ID HERE')}}">JOB TITLE</a></h4>
                   <p style="text-indent: 1em;">
                     <b>Job Description:</b>
                   </p>
