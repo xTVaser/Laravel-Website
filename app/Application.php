@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
+
 class Application extends Model
 {
   protected $fillable = [
@@ -25,11 +27,11 @@ class Application extends Model
     return $this->hasMany('App\Comment');
   }
 
-  public function joinJobsAndApplications() {
+  public static function joinJobsAndApplications() {
 
-          return DB::table('jobs')
-                        ->leftJoin('jobs', 'jobs.id', '=', 'job_id')
-                        ->select('users.*', 'jobs.*')
-                        ->get();
+          return $users = DB::table('applications')
+                    ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
+                    ->select('*')
+                    ->get();
   }
 }

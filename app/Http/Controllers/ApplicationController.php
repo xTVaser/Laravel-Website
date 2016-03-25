@@ -24,12 +24,10 @@ class ApplicationController extends Controller {
 
         public function viewAll() {
 
-                //Get all jobs from the database
-                $applications = Application::all();
-                $jobs = Job::all();
+                $appInfo = Application::joinJobsAndApplications();
 
                 //Return this data to the jobs view
-                return view('applications.index')->with('applications', $applications)->with('jobs', $jobs);
+                return view('applications.index')->with(compact('appInfo', $appInfo));
         }
 
         public function create($id) {
