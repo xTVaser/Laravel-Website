@@ -18,13 +18,17 @@
                     <p>{{ $job->salary }}</p>
 
                     <!-- If applicant -->
+                    @if(Auth::user()->flag == 0)
                     <btn class="btn btn-primary"><a href="{{ url('/apply/')}}/{{ $job->id }}">Apply</a></btn>
+                    @endif
                     <!-- Elseif member/chair -->
+                    @if(Auth::user()->flag >= 2)
                     <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
-
-                    <!-- Links to Applications. Should only be shown to faculty/chair members -->
+                    <!-- Links to Applications -->
                     <h3>Current Applications</h3>
                     <a href="{{ url('/applications/APPLICATION ID HERE')}}">Application #1</a>
+                    @endif
+
             </div>
           </div>
         </div>
