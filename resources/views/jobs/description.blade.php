@@ -26,7 +26,13 @@
                     <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
                     <!-- Links to Applications -->
                     <h3>Current Applications</h3>
-                    <a href="{{ url('/applications/APPLICATION ID HERE')}}">Application #1</a>
+
+                    <?php $var = 1; ?>
+                    @forelse($applications as $app)
+                    <a href="{{ url('/applications/')}}/{{ $app->app_id }}">Application #{{ $var++ }}</a><br>
+                    @empty
+                    <p>No Applications</p>
+                    @endforelse
                     @endif
 
             </div>

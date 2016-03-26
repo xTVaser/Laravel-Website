@@ -18,7 +18,7 @@
                                 SELECT * FROM applications LEFT JOIN jobs ON applications.job_id=jobs.id; -->
                 @forelse($appInfo as $app)
 
-                  <h4><a href="{{ url('/application/APPLCATION ID HERE')}}"> {{ $app->title }}</a></h4>
+                  <h4><a href="{{ url('/applications/')}}/{{$app->app_id}}"> {{ $app->title }}</a></h4>
                   <p style="text-indent: 1em;">
                     <b>Job Description:</b>
                   </p>

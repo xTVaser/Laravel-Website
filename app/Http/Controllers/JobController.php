@@ -20,7 +20,10 @@ class JobController extends Controller
     public function view(Request $request, $id) {
 
             $job = Job::find($id);
-            return view('jobs.description')->with('job', $job);
+
+            $applications = Job::allApplicationsOnJob($id);
+
+            return view('jobs.description')->with('job', $job)->with('applications', $applications);
     }
 
     //Called when the user wants to create a job
