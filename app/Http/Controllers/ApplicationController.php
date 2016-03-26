@@ -12,7 +12,7 @@ class ApplicationController extends Controller {
 
         public function view(Request $request, $id)
         {
-            $application = Application::find($id);
+            $application = Application::joinJobsAndApplicationsOnID($id);
             return view('applications.application')->with('application', $application);
         }
 

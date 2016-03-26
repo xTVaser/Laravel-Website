@@ -29,9 +29,17 @@ class Application extends Model
 
   public static function joinJobsAndApplications() {
 
-          return $users = DB::table('applications')
+          return $apps = DB::table('applications')
                     ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
                     ->select('*')
                     ->get();
+  }
+  public static function joinJobsAndApplicationsOnID($id) {
+
+          return $apps = DB::table('applications')
+                    ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
+                    ->select('*')
+                    ->where('applications.id', '=', $id)
+                    ->first();
   }
 }
