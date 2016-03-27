@@ -17,28 +17,26 @@
                     <h3>Salary</h3>
                     <p>{{ $job->salary }}</p>
 
-                    <!-- If applicant -->                 <!-- Will, add the link to the corresponding application page here -->
-                    <btn class="btn btn-primary"><a href="application page link goes here dont fucking click this you retard">Apply</a></btn>
-                    <!-- Elsif member/chair -->
+                    <!-- If applicant -->
+                    @if(Auth::user()->flag == 0)
+                    <btn class="btn btn-primary"><a href="{{ url('/apply/')}}/{{ $job->id }}">Apply</a></btn>
+                    @endif
+                    <!-- Elseif member/chair -->
+                    @if(Auth::user()->flag >= 2)
                     <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
-
-                    <!-- Links to Applications. Should only be shown to faculty/chair members -->
+                    <!-- Links to Applications -->
                     <h3>Current Applications</h3>
-                    <a href="{{ url('/application/APPLICATION ID HERE')}}">Application #1</a>
+
+                    <?php $var = 1; ?>
+                    @forelse($applications as $app)
+                    <a href="{{ url('/applications/')}}/{{ $app->app_id }}">Application #{{ $var++ }}</a><br>
+                    @empty
+                    <p>No Applications</p>
+                    @endforelse
+                    @endif
+
             </div>
           </div>
         </div>
-        <!-- Dont know why this is here, commenting out instead of deleting just in case we need it.
-        <div class="col-md-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading" id="panelHeader">Job Name</div>
-                  <div class="panel-body">
-                        <a href="{{ url('/apply/')}}/{{ $job->id }}" class="btn btn-primary">Submit Application</a>
-
-                        <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
-                  </div>
-                </div>
-        </div>
-      -->
 </div>
 @endsection

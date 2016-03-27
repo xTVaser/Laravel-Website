@@ -6,12 +6,13 @@ use Request;
 use Auth;
 
 use App\Application as Application;
+use App\Job as Job;
 
 class ApplicationController extends Controller {
 
         public function view(Request $request, $id)
         {
-            $application = Application::find($id);
+            $application = Application::joinJobsAndApplicationsOnID($id);
             return view('applications.application')->with('application', $application);
         }
 
@@ -23,16 +24,15 @@ class ApplicationController extends Controller {
 
         public function viewAll() {
 
-                //Get all jobs from the database
-                $applications = Application::all();
+                $appInfo = Application::joinJobsAndApplications();
 
                 //Return this data to the jobs view
-                return view('applications.index')->with('applications', $applications);
+                return view('applications.index')->with(compact('appInfo', $appInfo));
         }
 
         public function create($id) {
           $job = Job::find($id);
-          return view('applications.create')->with('job', $job);
+          return view('applications.apply')->with('job', $job);
         }
 
         public function store() {
@@ -40,6 +40,8 @@ class ApplicationController extends Controller {
 
           $application = Application::create($input);
           $application->user_id = Auth::user()->id;
+
+          $application->save();
 
           return redirect('/my-applications');
         }
