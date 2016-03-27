@@ -36,14 +36,13 @@ class ProfileController extends Controller
     {
         //Get current logged in user
         $profile = Auth::user()->profile;
-
         $input = Request::all();
 
         //Save user's profile
         $profile->update($input);
-
         $profile->save();
 
         //Redirect to view their profile?
         return redirect('/profile');
     }
+ }

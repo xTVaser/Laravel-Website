@@ -4,45 +4,87 @@ namespace App\Http\Controllers;
 
 use Request;
 use Auth;
-
 use App\Application as Application;
 use App\Job as Job;
 
-class ApplicationController extends Controller {
+class ApplicationController extends Controller
+{
+    public function view($id)
+    {
+        $application = Application::joinJobsAndApplicationsOnID($id);
 
-        public function view(Request $request, $id)
-        {
-            $application = Application::joinJobsAndApplicationsOnID($id);
-            return view('applications.application')->with('application', $application);
-        }
+        return view('applications.application')->with('application', $application);
+    }
 
-        public function viewOwn() {
+    public function viewOwn()
+    {
+        $applications = Auth::user()->getApplications();
 
-                $applications = Auth::user()->getApplications();
-                return view('applications.my-applications')->with('applications', $applications);
-        }
+        return view('applications.my-applications')->with('applications', $applications);
+    }
 
-        public function viewAll() {
-
-                $appInfo = Application::joinJobsAndApplications();
+    public function viewAll()
+    {
+        $appInfo = Application::joinJobsAndApplications();
 
                 //Return this data to the jobs view
                 return view('applications.index')->with(compact('appInfo', $appInfo));
-        }
+    }
 
-        public function create($id) {
-          $job = Job::find($id);
-          return view('applications.apply')->with('job', $job);
-        }
+    public function create($id)
+    {
+        $job = Job::find($id);
+        $profile = Auth::User()->profile;
 
-        public function store() {
-          $input = Request::all();
+        return view('applications.apply')->with('job', $job)->with('profile', $profile);
+    }
 
-          $application = Application::create($input);
-          $application->user_id = Auth::user()->id;
+    public function store()
+    {
+        $input = Request::all();
 
-          $application->save();
+        $application = Application::create($input);
+        $application->user_id = Auth::user()->id;
 
-          return redirect('/my-applications');
-        }
+        $application->save();
+
+        return redirect('/my-applications');
+    }
+
+    public function approveOrDeny($id) {
+
+            $user_flag = Auth::user()->flag;
+
+            if(Request::get('approve') && $user_flag == 3)
+                $this->approveApplicant($id);
+                else if(Request::get('deny') && $user_flag == 3)
+                        $this->denyApplicant($id);
+                else {
+                        $this->commentHandler();
+                }
+
+                return $this->view($id);
+    }
+
+    private function approveApplicant($id) {
+
+            $app = Application::find($id);
+
+            $app->status = "Accepted";
+
+            $app->save();
+
+
+    }
+
+    private function denyApplicant($id) {
+
+            $app = Application::find($id);
+
+            $app->status = "Rejected";
+
+            $app->save();
+
+            return redirect('/applications/'+$id);
+    }
 }

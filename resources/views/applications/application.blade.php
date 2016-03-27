@@ -9,6 +9,22 @@
 
                 <div class="panel-body">
                     Show profile of the user, whatever
+
+                    <!-- If its past the end date of applications -->
+
+
+                    {!! Form::open() !!}
+                    {!! csrf_field() !!}
+
+                    <div class="form-group">
+                            <input type="submit" name="approve" value="Approve Applicant">
+                    </div>
+                    <div class="form-group">
+                            <input type="submit" name="deny" value="Deny Applicant">
+                    </div>
+
+
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

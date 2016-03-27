@@ -35,8 +35,11 @@
                         <div class="form-group">
                                 <div class="input-group">
                                         {!! Form::label('LinkedIn') !!}
-                                        {!! Form::text('linkedin_link', null, ['class' => 'form-control', 'placeholder' => 'jsmith']) !!}
-                                        <span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
+
+                                        <div class="input-group">
+                                                {!! Form::text('linkedin_link', null, ['class' => 'form-control', 'placeholder' => 'jsmith']) !!}
+                                                <span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
+                                        </div>
                                 </div>
                         </div>
 

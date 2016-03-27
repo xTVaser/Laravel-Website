@@ -82,26 +82,28 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 Route::post('/jobs/create',     'JobController@store');
                 Route::post('jobs/edit/{id}',   'JobController@update');
 
+                Route::post('/applications/{id}', 'ApplicationController@approveOrDeny');
+
         });
 
         //FACULTY Only Pages//
         Route::group(['middleware' => 'faculty'], function () {
 
-                //Can view others peoples profiles!
+
 
         });
 
         //HIRING MEMBER Only Pages//
         Route::group(['middleware' => 'member'], function () {
 
-                //Can view others peoples profiles!
+
 
         });
 
         //HIRING CHAIR Only Pages//
         Route::group(['middleware' => 'chair'], function () {
 
-                //Can view others peoples profiles!
+
 
         });
 });
