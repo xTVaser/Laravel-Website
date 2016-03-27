@@ -91,24 +91,4 @@ class AuthController extends Controller
 
         return $user;
     }
-
-    protected function createFromAdmin(Request $request) {
-
-            $this->validate($request, [
-                    'email' => 'required|unique:users|max:255',
-                    'flag' => 'required',
-            ]);
-
-            $password = md5(time()); //Make a random password
-
-            //Send off email with password and such
-
-            $user = User::create([
-                'email' => $request['email'],
-                'password' => bcrypt($password),
-                'flag' => $request['flag'],
-            ]);
-
-            return $user;
-    }
 }

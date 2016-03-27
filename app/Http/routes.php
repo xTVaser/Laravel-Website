@@ -10,8 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -73,7 +71,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 //Create Account GET
                 Route::get('/createaccount', function () { return view('admin.createAccount'); });
                 //Create Account POST
-                Route::post('/createaccount',   'Auth\AuthController@createFromAdmin');
+                Route::post('/createaccount',   'AdminController@createFromAdmin');
 
                 //Jobs GET requests
                 Route::get('/jobs/create',      'JobController@create');
