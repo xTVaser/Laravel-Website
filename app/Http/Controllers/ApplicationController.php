@@ -18,7 +18,9 @@ class ApplicationController extends Controller
         $profile = Profile::findProfile($application->user_id);
         $comments = Application::sqlComments($id);
 
-        return view('applications.application')->with('application', $application)->with('profile', $profile)->with('comments', $comments);
+        return view('applications.application') ->with('application', $application)
+                                                ->with('profile', $profile)
+                                                ->with('comments', $comments);
     }
 
     public function viewOwn()
@@ -43,7 +45,8 @@ class ApplicationController extends Controller
         $job = Job::find($id);
         $profile = Auth::User()->profile;
 
-        return view('applications.apply')->with('job', $job)->with('profile', $profile);
+        return view('applications.apply')->with('job', $job)
+                                         ->with('profile', $profile);
     }
 
     public function store(Request $request)
@@ -70,6 +73,10 @@ class ApplicationController extends Controller
 
         $application->save();
 
+        $profile = Auth::User()->profile;
+        $profile->update($input);
+        $profile->save();
+
         return redirect('/my-applications');
     }
 
@@ -77,7 +84,7 @@ class ApplicationController extends Controller
 
             $user_flag = Auth::user()->flag;
 
-                    if($request->get('approve') && $user_flag == 3)
+                if($request->get('approve') && $user_flag == 3)
                         $this->approveApplicant($id);
                 else if($request->get('deny') && $user_flag == 3)
                         $this->denyApplicant($id);
@@ -86,13 +93,22 @@ class ApplicationController extends Controller
                 else if($request->get('dl_coverletter') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
                         return $this->downloadCoverLetter($id);
                 else if($request->get('post_comment') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
-                        $this->commentHandler($request, $id);
-
+                        $this->postComment($request, $id);
+                else if($request->get('edit_comment'))
+                        $this->editComment($request, $id);
 
                 return $this->view($id);
     }
 
-    private function commentHandler($request, $id) {
+    private function editComment($request, $id) {
+
+            $input = $request->all();
+
+
+
+    }
+
+    private function postComment($request, $id) {
 
             //$comments = Application::find($id)->getComments();
             $input = $request->all();

@@ -44,18 +44,28 @@
 
                     </div>
 
-                    {!! Form::close() !!}
 
+
+                                        {!! Form::close() !!}
 
                     @forelse($comments as $comment)
 
                     <p style="text-indent: 1em;">
                       <b>Comment {{ $comment->body }}</b>
+                      {!! Form::open() !!}
+                      {!! csrf_field() !!}
+                      {!! Form::hidden('comment_id', $comment->id) !!}
+                      <input type="submit" name="reply_comment" value="Reply">
+                      <input type="submit" name="edit_comment" value="Edit">
+                      {!! Form::close() !!}
                     </p>
+
+                   <a href="#" id="username" data-type="text" data-placement="right" data-title="Enter username">superuser</a>
 
                     @empty
                     <p>No Comments</p>
                     @endforelse
+
 
                 </div>
             </div>
