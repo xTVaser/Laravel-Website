@@ -12,6 +12,15 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 }
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  color: #8e6132;
+  background-color: #ec5a0f;
+}
+.dropdown-menu > li > a {
+  color: #FFFFFF;
+}
 .fa-btn {
   margin-right: 6px;
 }
@@ -60,7 +69,7 @@ body {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
-  color: #555;
+  color: #929292;
   background-color: #ec5a0f;
 }
 .btn-primary {
