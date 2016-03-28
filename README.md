@@ -42,6 +42,12 @@ Software Enginneering
 # If the website displays an error such as "table.x.. does not exist" 
 - run php artisan migrate  
 
+# If you are getting column not found errors, etc, or cannot run 'php artisan migrate'
+- Open MySQL workbench, and drop all of the tables in the EARS database. 
+- Now you can run a php artisan migrate
+- If this still fails, try running a php artisan migrate:install first
+- You can now seed the database with php artisan db:seed
+  
 # If you run into issues with composer or various package errors such as "HTMLService..." Errors
 Delete your composer.lock file
 Run 'composer install && composer update'
