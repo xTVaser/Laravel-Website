@@ -47,7 +47,6 @@ class ApplicationController extends Controller
 
         $application = Application::create($input);
         $application->user_id = Auth::user()->id;
-        $application->save();
 
         if($request->hasFile('resume') && $request->file('resume')->isValid()) {
                 $application->resume_filename = $request->file('resume')->getClientOriginalName();
@@ -61,8 +60,10 @@ class ApplicationController extends Controller
                 $md5 = md5(time());
                 $application->coverletter_md5 = $md5;
 
-                $request->file('resume')->move('uploads/coverletters/', $md5);
+                $request->file('coverletter')->move('uploads/coverletters/', $md5);
         }
+        
+        $application->save();
 
         return redirect('/my-applications');
     }
