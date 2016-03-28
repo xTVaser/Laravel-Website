@@ -69,14 +69,26 @@
                         </div>
 
                         <div class="form-group">
-                                {!! Form::label('Male') !!}
-                                {!! Form::radio('gender', 'Male', ['class' => 'form-control']) !!}
 
-                                {!! Form::label('Female') !!}
-                                {!! Form::radio('gender', 'Female', ['class' => 'form-control']) !!}
+                                {!! Form::label('gender', 'Gender') !!}
 
-                                {!! Form::label('Other') !!}
-                                {!! Form::radio('gender', 'Other', ['class' => 'form-control']) !!}
+                                <div class="form-inline">
+                                        <div class="radio">
+
+                                                {{ Form::radio('gender', 'Male', false) }}
+                                                {{ Form::label('Male') }}
+                                        </div>
+                                        <div class="radio">
+
+                                                {{ Form::radio('gender', 'Female', true) }}
+                                                {{ Form::label('Female') }}
+                                        </div>
+                                        <div class="radio">
+
+                                                {{ Form::radio('gender', 'Other', false) }}
+                                                {{ Form::label('Other') }}
+                                        </div>
+                                </div>
                         </div>
 
                         <div class="form-group">
