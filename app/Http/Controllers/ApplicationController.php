@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Response;
 use Auth;
+use DB;
+use File;
 use App\Application as Application;
 use App\Job as Job;
 use App\Profile as Profile;
@@ -87,7 +89,7 @@ class ApplicationController extends Controller
                 if($request->get('approve') && $user_flag == 3)
                         $this->approveApplicant($id);
                 else if($request->get('deny') && $user_flag == 3)
-                        $this->denyApplicant($id);
+                        return $this->denyApplicant($id);
                 else if($request->get('dl_resume') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
                         return $this->downloadResume($id);
                 else if($request->get('dl_coverletter') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
@@ -142,22 +144,33 @@ class ApplicationController extends Controller
     private function approveApplicant($id) {
 
             $app = Application::find($id);
-
             $app->status = "Accepted";
-
             $app->save();
 
-
+            //Email Applicant and tell him he got the job.
     }
 
     private function denyApplicant($id) {
 
             $app = Application::find($id);
 
-            $app->status = "Rejected";
+            //Email Applicant tell him he doesnt have the job.
 
-            $app->save();
+            //Delete his cover letter and resume
+            File::delete(public_path().'/uploads/resumes/'.$app->resume_md5);
+            File::delete(public_path().'/uploads/coverletter/'.$app->coverletter_md5);
 
-            return redirect('/applications/'+$id);
+            //Delete all respective comments.
+            DB::table('comments')
+                ->where('application_id', '=', $id)
+                ->delete();
+
+            //Delete the application finally.
+            DB::table('applications')
+                ->where('id', '=', $id)
+                ->delete();
+
+
+            return $this->viewAll();
     }
 }

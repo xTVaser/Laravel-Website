@@ -15,15 +15,16 @@
                     {!! csrf_field() !!}
 
                     @if($application->closing_date < (\Carbon\Carbon::now()))
+                    @else
+                    <b>Applications Still Open!</b>
+                    @endif
                     <div class="form-group">
                             <input type="submit" name="approve" value="Approve Applicant">
                     </div>
                     <div class="form-group">
                             <input type="submit" name="deny" value="Deny Applicant">
                     </div>
-                    @else
-                    <b>Applications Still Open!</b>
-                    @endif
+
 
                     <div class="form-group">
                             <input type="submit" name="dl_resume" value="Download Resume">
