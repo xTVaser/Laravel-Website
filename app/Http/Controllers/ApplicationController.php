@@ -34,7 +34,7 @@ class ApplicationController extends Controller
 
     public function viewAll()
     {
-        $appInfo = Application::joinJobsAndApplications();
+        $appInfo = Application::joinJobsAndApplicationsAndProfiles();
 
                 //Return this data to the jobs view
                 return view('applications.index')->with(compact('appInfo', $appInfo));

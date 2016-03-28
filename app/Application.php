@@ -36,11 +36,48 @@ class Application extends Model
                                 ->get();
   }
 
+  public static function joinJobsAndApplicationsAndProfiles() {
+
+          return $apps = DB::table('applications')
+                    ->join('jobs', 'applications.job_id', '=', 'jobs.id')
+                    ->join('profiles', 'applications.user_id', '=', 'profiles.user_id')
+                    ->select(   'applications.id as app_id',
+                                'status',
+                                'applications.created_at as app_created_at',
+                                'job_id',
+                                'applications.user_id',
+                                'title',
+                                'jobs.description',
+                                'qualifications',
+                                'salary',
+                                'start_date',
+                                'closing_date',
+                                'job_type',
+                                'jobs.created_at as job_created_at',
+                                'first_name',
+                                'last_name',
+                                'contact_email')
+                    ->distinct()
+                    ->get();
+  }
+
   public static function joinJobsAndApplications() {
 
           return $apps = DB::table('applications')
                     ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
-                    ->select('applications.id as app_id', 'status', 'applications.created_at as app_created_at', 'job_id', 'user_id', 'title', 'description', 'qualifications', 'salary', 'start_date', 'closing_date', 'job_type', 'jobs.created_at as job_created_at')
+                    ->select(   'applications.id as app_id',
+                                'status',
+                                'applications.created_at as app_created_at',
+                                'job_id',
+                                'user_id',
+                                'title',
+                                'description',
+                                'qualifications',
+                                'salary',
+                                'start_date',
+                                'closing_date',
+                                'job_type',
+                                'jobs.created_at as job_created_at')
                     ->distinct()
                     ->get();
   }
@@ -48,7 +85,19 @@ class Application extends Model
 
           return $apps = DB::table('applications')
                     ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
-                    ->select('applications.id as app_id', 'status', 'applications.created_at as app_created_at', 'job_id', 'user_id', 'title', 'description', 'qualifications', 'salary', 'start_date', 'closing_date', 'job_type', 'jobs.created_at as job_created_at')
+                    ->select(   'applications.id as app_id',
+                                'status',
+                                'applications.created_at as app_created_at',
+                                'job_id',
+                                'user_id',
+                                'title',
+                                'description',
+                                'qualifications',
+                                'salary',
+                                'start_date',
+                                'closing_date',
+                                'job_type',
+                                'jobs.created_at as job_created_at')
                     ->where('applications.id', '=', $id)
                     ->first();
   }

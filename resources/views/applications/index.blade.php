@@ -23,6 +23,7 @@
                     <b>Job Description:</b>
                   </p>
                   <p style="text-indent: 2em;">
+                          Ned: {{ $app->first_name }}
                   </p>
                   <p style="text-indent: 1em;">
                   </p>
