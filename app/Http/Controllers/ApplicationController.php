@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Response;
 use Auth;
 use App\Application as Application;
 use App\Job as Job;
@@ -62,25 +63,47 @@ class ApplicationController extends Controller
 
                 $request->file('coverletter')->move('uploads/coverletters/', $md5);
         }
-        
+
         $application->save();
 
         return redirect('/my-applications');
     }
 
-    public function approveOrDeny($id) {
+    public function approveOrDeny(Request $request, $id) {
 
             $user_flag = Auth::user()->flag;
 
-            if(Request::get('approve') && $user_flag == 3)
+            if($request->get('approve') && $user_flag == 3)
                 $this->approveApplicant($id);
-                else if(Request::get('deny') && $user_flag == 3)
+                else if($request->get('deny') && $user_flag == 3)
                         $this->denyApplicant($id);
+                else if($request->get('dl_resume') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
+                        return $this->downloadResume($id);
+                else if($request->get('dl_coverletter') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
+                        return $this->downloadCoverLetter($id);
                 else {
                         $this->commentHandler();
                 }
 
                 return $this->view($id);
+    }
+
+    private function downloadResume($id) {
+
+            $app = Application::find($id);
+
+            $file = public_path().'/uploads/resumes/'.$app->resume_md5;
+
+            return Response::download($file, $app->resume_filename);
+    }
+
+    private function downloadCoverLetter($id) {
+
+            $app = Application::find($id);
+
+            $file = public_path().'/uploads/coverletters/'.$app->coverletter_md5;
+
+            return Response::download($file, $app->coverletter_filename);
     }
 
     private function approveApplicant($id) {

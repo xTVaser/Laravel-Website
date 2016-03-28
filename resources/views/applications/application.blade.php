@@ -23,6 +23,13 @@
                             <input type="submit" name="deny" value="Deny Applicant">
                     </div>
 
+                    <div class="form-group">
+                            <input type="submit" name="dl_resume" value="Download Resume">
+                    </div>
+                    <div class="form-group">
+                            <input type="submit" name="dl_coverletter" value="Download Cover Letter">
+                    </div>
+
 
                     {!! Form::close() !!}
                 </div>
