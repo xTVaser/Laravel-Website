@@ -8,6 +8,7 @@ use Auth;
 use App\Application as Application;
 use App\Job as Job;
 use App\Profile as Profile;
+use App\Comment as Comment;
 
 class ApplicationController extends Controller
 {
@@ -15,10 +16,9 @@ class ApplicationController extends Controller
     {
         $application = Application::joinJobsAndApplicationsOnID($id);
         $profile = Profile::findProfile($application->user_id);
+        $comments = Application::sqlComments($id);
 
-
-
-        return view('applications.application')->with('application', $application)->with('profile', $profile);
+        return view('applications.application')->with('application', $application)->with('profile', $profile)->with('comments', $comments);
     }
 
     public function viewOwn()
@@ -77,19 +77,32 @@ class ApplicationController extends Controller
 
             $user_flag = Auth::user()->flag;
 
-            if($request->get('approve') && $user_flag == 3)
-                $this->approveApplicant($id);
+                    if($request->get('approve') && $user_flag == 3)
+                        $this->approveApplicant($id);
                 else if($request->get('deny') && $user_flag == 3)
                         $this->denyApplicant($id);
                 else if($request->get('dl_resume') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
                         return $this->downloadResume($id);
                 else if($request->get('dl_coverletter') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
                         return $this->downloadCoverLetter($id);
-                else {
-                        $this->commentHandler();
-                }
+                else if($request->get('post_comment') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
+                        $this->commentHandler($request, $id);
+
 
                 return $this->view($id);
+    }
+
+    private function commentHandler($request, $id) {
+
+            //$comments = Application::find($id)->getComments();
+            $input = $request->all();
+
+            $comment = new Comment;
+            $comment->application_id = $id;
+            $comment->author_id = Auth::User()->id;
+            $comment->body = $input['commentText'];
+
+            $comment->save();
     }
 
     private function downloadResume($id) {

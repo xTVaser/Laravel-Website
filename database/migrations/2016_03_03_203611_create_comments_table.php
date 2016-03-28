@@ -18,7 +18,6 @@ class CreateCommentsTable extends Migration
             $table->integer('author_id');
             $table->text('body');
             $table->timestamps();
-            //Parent relationship not done yet.
         });
     }
 

@@ -11,7 +11,6 @@
 
                                     <p>Name: {{ $profile->first_name }}</p>
                     <!-- If its past the end date of applications -->
-                    @if($application->closing_date < (\Carbon\Carbon::now()))
                     {!! Form::open() !!}
                     {!! csrf_field() !!}
 
@@ -29,11 +28,38 @@
                     <div class="form-group">
                             <input type="submit" name="dl_coverletter" value="Download Cover Letter">
                     </div>
-                    @else
-                    <b>Applications Still Open!</b>
-                    @endif
+
+
+                    <div class="form-group">
+                            <input type="submit" name="post_comment" value="Post Comment">
+                    </div>
+
+                    <div class="form-group">
+                            {!! Form::label('Post a Comment') !!}
+                            {!! Form::textarea('commentText', null, ['class' => 'form-control', 'placeholder' => 'This guy sucks']) !!}
+
+
+                    </div>
 
                     {!! Form::close() !!}
+
+
+                    @forelse($comments as $comment)
+
+                    <p style="text-indent: 1em;">
+                      <b>Comment {{ $comment->body }}</b>
+                    </p>
+
+                    @empty
+                    <p>No Comments</p>
+                    @endforelse
+
+
+
+                    <!--@if($application->closing_date < (\Carbon\Carbon::now())) -->
+                    <!--@else
+                    <b>Applications Still Open!</b>
+                    @endif -->
                 </div>
             </div>
         </div>

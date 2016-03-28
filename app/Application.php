@@ -27,6 +27,15 @@ class Application extends Model
     return $this->hasMany('App\Comment');
   }
 
+  public static function sqlComments($id) {
+
+          return $comments = DB::table('comments')
+                                ->select('*')
+                                ->where('application_id', '=', $id)
+                                ->distinct()
+                                ->get();
+  }
+
   public static function joinJobsAndApplications() {
 
           return $apps = DB::table('applications')
