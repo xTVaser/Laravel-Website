@@ -10,8 +10,8 @@
         <div class="panel-heading" id="panelHeader">Job Listings</div>
         <div class="panel-body">
                 @foreach($jobs as $job)
-                <!-- Do not Display Jobs that are not available currently -->
-                  @if($job->closing_date > (\Carbon\Carbon::now()))
+                <!-- Do not Display Jobs that are not available currently; expired jobs can be seen by elevated users -->
+                  @if($job->closing_date > (\Carbon\Carbon::now()) || Auth::user()->flag >=2)
                   <h4><a href="{{ url('/jobs/description/')}}/{{ $job->id }}">{{ $job->title }}</a></h4>
                   <p style="text-indent: 1em;">
                     <b>Job Description:</b>
