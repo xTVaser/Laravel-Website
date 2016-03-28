@@ -39,7 +39,7 @@
 
                         <div class="form-group">
                           {!! Form::label('Cover Letter') !!}
-                          {!! Form::file('cover-letter', null, ['class' => 'btn btn-primary form-control']) !!}
+                          {!! Form::file('coverletter', null, ['class' => 'btn btn-primary form-control']) !!}
                         </div>
 
                         <div class="form-group">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use Auth;
 use App\Application as Application;
 use App\Job as Job;
@@ -19,6 +19,8 @@ class ApplicationController extends Controller
     public function viewOwn()
     {
         $applications = Auth::user()->getApplications();
+
+        //May need job info here as well?
 
         return view('applications.my-applications')->with('applications', $applications);
     }
@@ -39,14 +41,28 @@ class ApplicationController extends Controller
         return view('applications.apply')->with('job', $job)->with('profile', $profile);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $input = Request::all();
+        $input = $request->all();
 
         $application = Application::create($input);
         $application->user_id = Auth::user()->id;
-
         $application->save();
+
+        if($request->hasFile('resume') && $request->file('resume')->isValid()) {
+                $application->resume_filename = $request->file('resume')->getClientOriginalName();
+                $md5 = md5(time());
+                $application->resume_md5 = $md5;
+                $request->file('resume')->move('uploads/resumes/', $md5);
+        }
+
+        if($request->hasFile('coverletter') && $request->file('coverletter')->isValid()) {
+                $application->coverletter_filename = $request->file('coverletter')->getClientOriginalName();
+                $md5 = md5(time());
+                $application->coverletter_md5 = $md5;
+
+                $request->file('resume')->move('uploads/coverletters/', $md5);
+        }
 
         return redirect('/my-applications');
     }
