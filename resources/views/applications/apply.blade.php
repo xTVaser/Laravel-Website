@@ -19,17 +19,17 @@
 
                         <div class="form-group">
                                 {!! Form::label('Middle Name') !!}
-                                {!! Form::text('middle_name', null, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
+                                {!! Form::text('middle_name', $profile->middle_name, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Last Name') !!}
-                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
+                                {!! Form::text('last_name', $profile->last_name, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Contact Email') !!}
-                                {!! Form::email('contact_email', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::email('contact_email', $profile->contact_email, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
                         </div>
 
                         <div class="form-group">
