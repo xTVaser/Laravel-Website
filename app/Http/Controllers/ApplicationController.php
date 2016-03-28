@@ -7,14 +7,18 @@ use Response;
 use Auth;
 use App\Application as Application;
 use App\Job as Job;
+use App\Profile as Profile;
 
 class ApplicationController extends Controller
 {
     public function view($id)
     {
         $application = Application::joinJobsAndApplicationsOnID($id);
+        $profile = Profile::findProfile($application->user_id);
 
-        return view('applications.application')->with('application', $application);
+
+
+        return view('applications.application')->with('application', $application)->with('profile', $profile);
     }
 
     public function viewOwn()

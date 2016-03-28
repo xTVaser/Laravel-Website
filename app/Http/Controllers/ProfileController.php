@@ -12,7 +12,6 @@ class ProfileController extends Controller
     public function view($id)
     {
         $profile = Profile::find($id);
-
         return view('profile.profile')->with('profile', $profile);
     }
 

@@ -8,10 +8,13 @@
                 <div class="panel-heading" id="panelHeader">Application: {{ $application->title }}</div>
 
 
+
+                                    <p>Name: {{ $profile->first_name }}</p>
                     <!-- If its past the end date of applications -->
                     @if($application->closing_date < (\Carbon\Carbon::now()))
                     {!! Form::open() !!}
                     {!! csrf_field() !!}
+
 
                     <div class="form-group">
                             <input type="submit" name="approve" value="Approve Applicant">
