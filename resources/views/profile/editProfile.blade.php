@@ -19,17 +19,17 @@
 
                         <div class="form-group">
                                 {!! Form::label('Middle Name') !!}
-                                {!! Form::text('middle_name', null, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
+                                {!! Form::text('middle_name', $profile->middle_name, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Last Name') !!}
-                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
+                                {!! Form::text('last_name', $profile->last_name, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Contact Email') !!}
-                                {!! Form::email('contact_email', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::email('contact_email', $profile->contact_email, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
                         </div>
 
                         <div class="form-group">
@@ -45,27 +45,27 @@
 
                         <div class="form-group">
                                 {!! Form::label('Description') !!}
-                                {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                                {!! Form::textarea('description', $profile->description, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Job Title') !!}
-                                {!! Form::text('job_title', null, ['class' => 'form-control', 'placeholder' => 'Associate Professor']) !!}
+                                {!! Form::text('job_title', $profile->job_title, ['class' => 'form-control', 'placeholder' => 'Associate Professor']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Company') !!}
-                                {!! Form::text('company', null, ['class' => 'form-control', 'placeholder' => 'Algoma University']) !!}
+                                {!! Form::text('company', $profile->company, ['class' => 'form-control', 'placeholder' => 'Algoma University']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Department') !!}
-                                {!! Form::text('department', null, ['class' => 'form-control', 'placeholder' => 'Computer Science']) !!}
+                                {!! Form::text('department', $profile->department, ['class' => 'form-control', 'placeholder' => 'Computer Science']) !!}
                         </div>
 
                         <div class="form-group">
                                 {!! Form::label('Birthday') !!}
-                                {!! Form::date('birthdate', null, ['class' => 'form-control']) !!}
+                                {!! Form::date('birthdate', $profile->birthdate, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
