@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
 
-                        {!! Form::open() !!}
+                        {!! Form::open(array('files' => true)) !!}
                         {!! csrf_field() !!}
 
                         <div class="form-group">
