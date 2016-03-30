@@ -16,10 +16,6 @@
                     @empty
                     <p>Go Apply for something</p>
                    @endforelse
-
-
-
-
           </div>
         </div>
       </div>

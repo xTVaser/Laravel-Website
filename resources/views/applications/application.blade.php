@@ -6,6 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading" id="panelHeader">Application: {{ $application->title }}</div>
+                        <div class="panel-body">
 
 
 
@@ -70,7 +71,7 @@
                     @empty
                     <p>No Comments</p>
                     @endforelse
-
+            </div>
                 </div>
             </div>
         </div>
