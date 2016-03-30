@@ -9,6 +9,14 @@
           <div class="panel-heading" id="panelHeader">My Applications</div>
           <div class="panel-body">
 
+                  @forelse($applications as $app)
+
+                    <p>{{ $profile->first_name }} {{ $app->status }}</p>
+
+                    @empty
+                    <p>Go Apply for something</p>
+                   @endforelse
+
 
 
 
