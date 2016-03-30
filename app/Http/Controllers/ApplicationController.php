@@ -23,7 +23,8 @@ class ApplicationController extends Controller
 
         return view('applications.application') ->with('application', $application)
                                                 ->with('profile', $profile)
-                                                ->with('comments', $comments);
+                                                ->with('comments', $comments)
+                                                ->with('currentUser', Auth::User()->id);
     }
 
     public function viewOwn()
