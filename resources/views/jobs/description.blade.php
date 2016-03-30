@@ -23,7 +23,7 @@
                     @endif
                     <!-- Elseif member/chair -->
                     @if(Auth::user()->flag >= 2)
-                    <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id}}">Edit Job</a></btn>
+                    <btn class="btn btn-warning"><a href="{{ url('/jobs/edit/')}}/{{ $job->id }}">Edit Job</a></btn>
                     <!-- Links to Applications -->
                     <h3>Current Applications</h3>
 

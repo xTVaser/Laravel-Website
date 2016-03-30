@@ -173,6 +173,7 @@ class ApplicationController extends Controller
             Mail::send('emails.grats', ['profile' => $profile], function ($message) use ($profile) {
             $message->from('chair@algomau.ca', 'Hiring Chair');
             $message->to($profile->contact_email);
+            $message->subject('Applcation Approved');
         });
 
 
@@ -188,6 +189,7 @@ class ApplicationController extends Controller
             Mail::send('emails.rekt', ['profile' => $profile], function ($message) use ($profile) {
             $message->from('chair@algomau.ca', 'Hiring Chair');
             $message->to($profile->contact_email);
+            $message->subject('Application Denial');
         });
 
             //Delete his cover letter and resume

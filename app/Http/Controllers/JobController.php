@@ -71,6 +71,7 @@ class JobController extends Controller
                             Mail::send('emails.goofed', ['profile' => $profile], function ($message) use ($profile) {
                             $message->from('chair@algomau.ca', 'Hiring Chair');
                             $message->to($profile->contact_email);
+                            $message->subject('Job Description has Changed');
                             });
                     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profile as Profile;
 use DB;
+use Mail;
+
 
 class AdminController extends Controller
 {
@@ -15,16 +17,15 @@ class AdminController extends Controller
 
     protected function createFromAdmin(Request $request)
     {
-
-        // $this->validate($request, [
-        //         'email' => 'required|unique:users|max:255',
-        //         'flag' => 'required',
-        // ]);
-
         //Make a random password
-        $password = 'test123';//md5(time());
+        $password = md5(time());
 
         //Send off email with password and such
+        Mail::send('emails.newaccount', ['password' => $password], function ($message) use ($request) {
+        $message->from('chair@algomau.ca', 'Hiring Chair');
+        $message->to($request['email']);
+        $message->subject('Faculty or Member Account Creation');
+    });
 
         $id = DB::table('users')->insertGetId([
             'email' => $request['email'],
@@ -47,5 +48,7 @@ class AdminController extends Controller
         $profile->linkedin_link = 'freeloader1';
 
         $profile->save();
+
+        return view('home');
     }
 }
