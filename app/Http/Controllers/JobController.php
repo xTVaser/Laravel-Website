@@ -17,13 +17,13 @@ class JobController extends Controller
       return view('jobs.index')->with('jobs', $jobs);
     }
 
-    public function view(Request $request, $id) {
+    public function view(Request $request, $id)
+    {
+        $job = Job::find($id);
 
-            $job = Job::find($id);
+        $applications = Job::allApplicationsOnJob($id);
 
-            $applications = Job::allApplicationsOnJob($id);
-
-            return view('jobs.description')->with('job', $job)->with('applications', $applications);
+        return view('jobs.description')->with('job', $job)->with('applications', $applications);
     }
 
     //Called when the user wants to create a job
@@ -43,21 +43,22 @@ class JobController extends Controller
         return redirect('jobs');
     }
 
-    public function edit(Request $request, $id) {
+    public function edit(Request $request, $id)
+    {
+        $job = Job::find($id);
 
-            $job = Job::find($id);
-            return view('jobs.edit')->with('job', $job);
+        return view('jobs.edit')->with('job', $job);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
+        $job = Job::find($id);
 
-            $job = Job::find($id);
-
-            $input = Request::all();
+        $input = Request::all();
 
             //Save user's profile
             $job->update($input);
-            $job->save();
+        $job->save();
 
             //Redirect to view their profile
             return redirect()->action('JobController@view', [$id]);

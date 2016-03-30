@@ -47,7 +47,7 @@
 
 
 
-                                        {!! Form::close() !!}
+                    {!! Form::close() !!}
 
                     @forelse($comments as $comment)
 
@@ -61,12 +61,10 @@
                       {!! Form::close() !!}
                     </p>
 
-                   <a href="#" id="username" data-type="text" data-placement="right" data-title="Enter username">superuser</a>
 
                     @empty
                     <p>No Comments</p>
                     @endforelse
-
 
                 </div>
             </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Request;
 use Auth;
-
 use App\Profile as Profile;
 
 class ProfileController extends Controller
@@ -12,23 +11,27 @@ class ProfileController extends Controller
     public function view($id)
     {
         $profile = Profile::find($id);
+
         return view('profile.profile')->with('profile', $profile);
     }
 
-    public function view_self() {
-      $profile = Auth::user()->profile;
-      return view('profile.profile')->with('profile', $profile);
+    public function view_self()
+    {
+        $profile = Auth::user()->profile;
+
+        return view('profile.profile')->with('profile', $profile);
     }
 
     public function edit()
     {
-            $profile = Auth::user()->profile;
+        $profile = Auth::user()->profile;
+
         return view('profile.editProfile')->with('profile', $profile);
     }
 
     public function create()
     {
-      return view('profile.createProfile');
+        return view('profile.createProfile');
     }
 
     public function update()
@@ -44,4 +47,4 @@ class ProfileController extends Controller
         //Redirect to view their profile?
         return redirect('/profile');
     }
- }
+}

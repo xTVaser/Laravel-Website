@@ -63,13 +63,15 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 //Applications
                 Route::get('/applications/{id}',        'ApplicationController@view');
                 Route::get('/applications/',            'ApplicationController@viewAll');
+
+                Route::post('/update',                  'AplicationController@editComment');
         });
 
         //HIRING MEMBER and HIRING CHAIR Pages
         Route::group(['middleware' => 'committee'], function () {
 
                 //Create Account GET
-                Route::get('/createaccount', function () { return view('admin.createAccount'); });
+                Route::get('/createaccount',    'AdminController@viewCreateAccount');
                 //Create Account POST
                 Route::post('/createaccount',   'AdminController@createFromAdmin');
 

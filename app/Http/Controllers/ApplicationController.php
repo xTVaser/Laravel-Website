@@ -103,8 +103,24 @@ class ApplicationController extends Controller
     }
 
     private function editComment($request, $id) {
+            // get database row id
+    $pk = $request->input('pk');
 
-            $input = $request->all();
+    // get column name
+    $col = $request->input('name');
+
+    // get new value
+    $value = $request->input('value');
+
+    // get id row of line item and edit/save
+    if ($finditem = Items::where('id', $pk)->update([$col => $value]))
+    {
+        return \Response::json(array('status' => 1));
+    }
+    else
+    {
+        return \Response::json(array('status' => 0));
+    }
 
 
 
@@ -158,7 +174,7 @@ class ApplicationController extends Controller
 
             //Delete his cover letter and resume
             File::delete(public_path().'/uploads/resumes/'.$app->resume_md5);
-            File::delete(public_path().'/uploads/coverletter/'.$app->coverletter_md5);
+            File::delete(public_path().'/uploads/coverletters/'.$app->coverletter_md5);
 
             //Delete all respective comments.
             DB::table('comments')
