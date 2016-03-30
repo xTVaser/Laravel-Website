@@ -97,32 +97,19 @@ class ApplicationController extends Controller
                 else if($request->get('post_comment') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3))
                         $this->postComment($request, $id);
                 else if($request->get('edit_comment'))
-                        $this->editComment($request, $id);
+                        $this->editComment($request->all());
+                else if($request->get('reply_comment'))
+                        $this->replyComment();
 
                 return $this->view($id);
     }
 
-    private function editComment($request, $id) {
-            // get database row id
-    $pk = $request->input('pk');
+    private function editComment($input) {
 
-    // get column name
-    $col = $request->input('name');
+            $comment = Comment::find($input['comment_id']);
 
-    // get new value
-    $value = $request->input('value');
-
-    // get id row of line item and edit/save
-    if ($finditem = Items::where('id', $pk)->update([$col => $value]))
-    {
-        return \Response::json(array('status' => 1));
-    }
-    else
-    {
-        return \Response::json(array('status' => 0));
-    }
-
-
+            $comment->body = $input['commentBody'];
+            $comment->update();
 
     }
 

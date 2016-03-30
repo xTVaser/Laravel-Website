@@ -15,6 +15,8 @@
                     {!! csrf_field() !!}
 
                     @if($application->closing_date < (\Carbon\Carbon::now()))
+
+                    {{-- I put the approve and deny outside of thisif statement for visual design purposes --}}
                     @else
                     <b>Applications Still Open!</b>
                     @endif
@@ -41,8 +43,6 @@
                     <div class="form-group">
                             {!! Form::label('Post a Comment') !!}
                             {!! Form::textarea('commentText', null, ['class' => 'form-control', 'placeholder' => 'This guy sucks']) !!}
-
-
                     </div>
 
 
@@ -55,9 +55,12 @@
                       <b>Comment {{ $comment->body }}</b>
                       {!! Form::open() !!}
                       {!! csrf_field() !!}
+                      <div id="comment{{ $comment->id }}">
                       {!! Form::hidden('comment_id', $comment->id) !!}
-                      <input type="submit" name="reply_comment" value="Reply">
-                      <input type="submit" name="edit_comment" value="Edit">
+                      {{-- Only if the comment matches the user id, aka it's their comment --}}
+                      <input id="editButton" type="button" value="Edit" onclick="clickEdit({{ $comment->id }}, '{{ $comment->body }}');" />
+                      <input id="editButton" type="button" value="Reply" onclick="clickReply({{ $comment->id }}, '{{ $comment->author_id }}');" />
+                        </div>
                       {!! Form::close() !!}
                     </p>
 

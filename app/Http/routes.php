@@ -63,8 +63,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 //Applications
                 Route::get('/applications/{id}',        'ApplicationController@view');
                 Route::get('/applications/',            'ApplicationController@viewAll');
-
-                Route::post('/update',                  'AplicationController@editComment');
         });
 
         //HIRING MEMBER and HIRING CHAIR Pages
