@@ -99,9 +99,24 @@ class ApplicationController extends Controller
                 else if($request->get('edit_comment'))
                         $this->editComment($request->all());
                 else if($request->get('reply_comment'))
-                        $this->replyComment();
+                        $this->replyComment($request->all(), $id);
 
                 return $this->view($id);
+    }
+
+    private function replyComment($input, $app_id) {
+
+            $author_comment = Comment::find($input['comment_id']);
+
+            $author_profile = Profile::findProfile($author_comment['author_id']);
+
+            $comment = new Comment;
+            $comment->application_id = $app_id;
+            $comment->author_id = Auth::User()->id;
+            $comment->body = $comment->body = "In response to ".$author_profile->first_name." ".$author_profile->last_name."'s Comment: ".$input['commentBody'];
+
+            $comment->save();
+
     }
 
     private function editComment($input) {

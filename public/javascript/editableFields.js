@@ -7,6 +7,6 @@ function clickEdit(commentId, commentBody) {
 
 function clickReply(commentId, originalAuthor) {
 
-        $("#comment"+commentId).append("<br><textarea class=\"form-control\" placeholder=\"This guy sucks\" name=\"commentText\" cols=\"50\" rows=\"10\">"+originalAuthor+"</textarea>")
+        $("#comment"+commentId).append("<br><textarea class=\"form-control\" placeholder=\"This guy sucks\" name=\"commentBody\" cols=\"50\" rows=\"10\">"+originalAuthor+"</textarea>")
         $("#comment"+commentId).append("<input type=\"submit\" name=\"reply_comment\" value=\"Submit Reply\">")
 }

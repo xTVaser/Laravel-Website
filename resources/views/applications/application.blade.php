@@ -43,6 +43,8 @@
                     <div class="form-group">
                             {!! Form::label('Post a Comment') !!}
                             {!! Form::textarea('commentText', null, ['class' => 'form-control', 'placeholder' => 'This guy sucks']) !!}
+
+
                     </div>
 
 
