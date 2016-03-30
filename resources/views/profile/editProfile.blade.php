@@ -74,19 +74,31 @@
 
                                 <div class="form-inline">
                                         <div class="radio">
-
-                                                {{ Form::radio('gender', 'Male', false) }}
-                                                {{ Form::label('Male') }}
+                                          @if($profile->gender == 'Male')
+                                            {{ Form::radio('gender', 'Male', true) }}
+                                            {{ Form::label('Male') }}
+                                          @else
+                                            {{ Form::radio('gender', 'Male', false) }}
+                                            {{ Form::label('Male') }}
+                                          @endif
                                         </div>
                                         <div class="radio">
-
-                                                {{ Form::radio('gender', 'Female', true) }}
-                                                {{ Form::label('Female') }}
+                                          @if($profile->gender == 'Female')
+                                            {{ Form::radio('gender', 'Female', true) }}
+                                            {{ Form::label('Female') }}
+                                          @else
+                                            {{ Form::radio('gender', 'Female', false) }}
+                                            {{ Form::label('Female') }}
+                                          @endif
                                         </div>
                                         <div class="radio">
-
-                                                {{ Form::radio('gender', 'Other', false) }}
-                                                {{ Form::label('Other') }}
+                                          @if($profile->gender == 'Other')
+                                            {{ Form::radio('gender', 'Other', true) }}
+                                            {{ Form::label('Other') }}
+                                          @else
+                                            {{ Form::radio('gender', 'Other', false) }}
+                                            {{ Form::label('Other') }}
+                                          @endif
                                         </div>
                                 </div>
                         </div>
