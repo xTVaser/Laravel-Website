@@ -55,8 +55,8 @@
                       <div id="comment{{ $comment->id }}">
                       {!! Form::hidden('comment_id', $comment->id) !!}
                       {{-- Only if the comment matches the user id, aka it's their comment --}}
-                      <input id="editButton" type="button" value="Edit" onclick="clickEdit({{ $comment->id }}, '{{ $comment->body }}');" />
-                      <input id="editButton" type="button" value="Reply" onclick="clickReply({{ $comment->id }}, '{{ $comment->author_id }}');" />
+                      <input id="editButton" type="button" value="Edit" class="btn btn-warning" onclick="clickEdit({{ $comment->id }}, '{{ $comment->body }}');" />
+                      <input id="editButton" type="button" value="Reply" class="btn btn-info" onclick="clickReply({{ $comment->id }}, '{{ $comment->author_id }}');" />
                         </div>
                       {!! Form::close() !!}
                     </p>
