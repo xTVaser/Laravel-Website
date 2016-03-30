@@ -10,44 +10,39 @@
 
 
 
-                                    <p>Name: {{ $profile->first_name }}</p>
+                    <p>{{ $profile->first_name }} {{ $profile->middle_name }} {{ $profile->last_name }} </p>
+                    <p><i>Originally applied on: {{ $application->app_created_at}} </i> </p>
+                    <p><i>Application last updated on: {{ $application->app_updated_at}} </i> </p>
+
+
                     <!-- If its past the end date of applications -->
                     {!! Form::open() !!}
                     {!! csrf_field() !!}
 
                     @if($application->closing_date < (\Carbon\Carbon::now()))
-
-                    {{-- I put the approve and deny outside of thisif statement for visual design purposes --}}
+                      <div class="form-group">
+                              <input type="submit" name="approve" value="Approve Applicant" class="btn btn-success" >
+                              <input type="submit" name="deny" value="Deny Applicant" class="btn btn-danger" >
+                      </div>
                     @else
-                    <b>Applications Still Open!</b>
+                    <b>Applications Still Open!</b><br><br>
                     @endif
-                    <div class="form-group">
-                            <input type="submit" name="approve" value="Approve Applicant">
-                    </div>
-                    <div class="form-group">
-                            <input type="submit" name="deny" value="Deny Applicant">
-                    </div>
 
 
                     <div class="form-group">
-                            <input type="submit" name="dl_resume" value="Download Resume">
-                    </div>
-                    <div class="form-group">
-                            <input type="submit" name="dl_coverletter" value="Download Cover Letter">
+                          <input type="submit" name="dl_resume" value="Download Resume" class="btn btn-primary">
+                          <input type="submit" name="dl_coverletter" value="Download Cover Letter" class="btn btn-primary">
                     </div>
 
 
-                    <div class="form-group">
-                            <input type="submit" name="post_comment" value="Post Comment">
-                    </div>
+
 
                     <div class="form-group">
-                            {!! Form::label('Post a Comment') !!}
-                            {!! Form::textarea('commentText', null, ['class' => 'form-control', 'placeholder' => 'This guy sucks']) !!}
-
-
+                            {!! Form::textarea('commentText', null, ['class' => 'form-control', 'placeholder' => 'Comment...']) !!}
                     </div>
-
+                    <div class="form-group">
+                            <input type="submit" name="post_comment" value="Post Comment" class="btn btn-info">
+                    </div>
 
 
                     {!! Form::close() !!}
@@ -61,8 +56,8 @@
                       <div id="comment{{ $comment->id }}">
                       {!! Form::hidden('comment_id', $comment->id) !!}
                       {{-- Only if the comment matches the user id, aka it's their comment --}}
-                      <input id="editButton" type="button" value="Edit" onclick="clickEdit({{ $comment->id }}, '{{ $comment->body }}');" />
-                      <input id="editButton" type="button" value="Reply" onclick="clickReply({{ $comment->id }}, '{{ $comment->author_id }}');" />
+                      <input id="editButton" type="button" value="Edit" class="btn btn-warning" onclick="clickEdit({{ $comment->id }}, '{{ $comment->body }}');" />
+                      <input id="editButton" type="button" value="Reply" class="btn btn-info" onclick="clickReply({{ $comment->id }}, '{{ $comment->author_id }}');" />
                         </div>
                       {!! Form::close() !!}
                     </p>
