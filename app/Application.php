@@ -101,4 +101,26 @@ class Application extends Model
                     ->where('applications.id', '=', $id)
                     ->first();
   }
+
+  public static function joinJobsAndApplicationsOnUserID($id) {
+
+          return $apps = DB::table('applications')
+                    ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
+                    ->select(   'applications.id as app_id',
+                                'status',
+                                'applications.created_at as app_created_at',
+                                'job_id',
+                                'user_id',
+                                'title',
+                                'description',
+                                'qualifications',
+                                'salary',
+                                'start_date',
+                                'closing_date',
+                                'job_type',
+                                'jobs.created_at as job_created_at')
+                    ->distinct()
+                    ->where('user_id', '=', $id)
+                    ->get();
+  }
 }

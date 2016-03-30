@@ -7,6 +7,7 @@ use Response;
 use Auth;
 use DB;
 use File;
+use Mail;
 use App\Application as Application;
 use App\Job as Job;
 use App\Profile as Profile;
@@ -29,6 +30,7 @@ class ApplicationController extends Controller
     {
         $applications = Auth::user()->getApplications();
 
+        
         //May need job info here as well?
 
         return view('applications.my-applications')->with('applications', $applications);
@@ -165,14 +167,28 @@ class ApplicationController extends Controller
             $app->status = "Accepted";
             $app->save();
 
+            $profile = Profile::findProfile($app->user_id);
+
             //Email Applicant and tell him he got the job.
+            Mail::send('emails.grats', ['profile' => $profile], function ($message) use ($profile) {
+            $message->from('chair@algomau.ca', 'Hiring Chair');
+            $message->to($profile->contact_email);
+        });
+
+
     }
 
     private function denyApplicant($id) {
 
             $app = Application::find($id);
 
-            //Email Applicant tell him he doesnt have the job.
+            $profile = Profile::findProfile($app->user_id);
+
+            //Email Applicant and tell him he got the job.
+            Mail::send('emails.rekt', ['profile' => $profile], function ($message) use ($profile) {
+            $message->from('chair@algomau.ca', 'Hiring Chair');
+            $message->to($profile->contact_email);
+        });
 
             //Delete his cover letter and resume
             File::delete(public_path().'/uploads/resumes/'.$app->resume_md5);

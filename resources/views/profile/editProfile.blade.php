@@ -74,18 +74,18 @@
 
                                 <div class="form-inline">
                                         <div class="radio">
-
+                                                
                                                 {{ Form::radio('gender', 'Male', false) }}
                                                 {{ Form::label('Male') }}
                                         </div>
                                         <div class="radio">
 
-                                                {{ Form::radio('gender', 'Female', true) }}
+                                                {{ Form::radio('gender', 'Female', false) }}
                                                 {{ Form::label('Female') }}
                                         </div>
                                         <div class="radio">
 
-                                                {{ Form::radio('gender', 'Other', false) }}
+                                                {{ Form::radio('gender', 'Other', true) }}
                                                 {{ Form::label('Other') }}
                                         </div>
                                 </div>

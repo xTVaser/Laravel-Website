@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Request;
+use Mail;
+use App\Profile as Profile;
 use App\Job;
 
 class JobController extends Controller
@@ -56,11 +58,27 @@ class JobController extends Controller
 
         $input = Request::all();
 
-            //Save user's profile
             $job->update($input);
         $job->save();
 
+
+                    $applications = Job::allApplicationsOnJob($id);
+
+                    foreach($applications as $application) {
+
+                            $profile = Profile::findProfile($application->user_id);
+                            //Email Applicant and tell him he got the job.
+                            Mail::send('emails.goofed', ['profile' => $profile], function ($message) use ($profile) {
+                            $message->from('chair@algomau.ca', 'Hiring Chair');
+                            $message->to($profile->contact_email);
+                            });
+                    }
+
+
+
+
             //Redirect to view their profile
             return redirect()->action('JobController@view', [$id]);
+
     }
 }
