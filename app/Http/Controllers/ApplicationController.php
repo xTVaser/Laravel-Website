@@ -28,12 +28,12 @@ class ApplicationController extends Controller
 
     public function viewOwn()
     {
-        $applications = Auth::user()->getApplications();
+        $applications = Application::joinJobsAndApplicationsOnUserID(Auth::User()->id);
+        $profile = Auth::User()->profile;
 
-        
         //May need job info here as well?
 
-        return view('applications.my-applications')->with('applications', $applications);
+        return view('applications.my-applications')->with('applications', $applications)->with('profile', $profile);
     }
 
     public function viewAll()
