@@ -10,7 +10,7 @@
 
 
 
-                    <p>{{ $profile->first_name }} {{ $profile->middle_name }} {{ $profile->last_name }} </p>
+                    <a href="{{ url('/profile/')}}/{{ $profile->user_id }}">{{ $profile->first_name }} {{ $profile->middle_name }} {{ $profile->last_name }} </a>
                     <p><i>Originally applied on: {{ $application->app_created_at}} </i> </p>
                     <p><i>Application last updated on: {{ $application->app_updated_at}} </i> </p>
 
@@ -18,6 +18,12 @@
                     <!-- If its past the end date of applications -->
                     {!! Form::open() !!}
                     {!! csrf_field() !!}
+
+                    @if( $application->status == 'Pending' )
+                        <h2 style="color: #c4800c">Application Pending</h2>
+                        @else
+                        <h2 style="color: #427d22">Application Approved</h2>
+                        @endif
 
                     @if($application->closing_date < (\Carbon\Carbon::now()))
                       <div class="form-group">
