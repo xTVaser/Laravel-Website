@@ -81,7 +81,10 @@
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>View Profile</a></li>
                                 <li><a href="{{ url('/editprofile') }}"><i class="fa fa-btn fa-pencil-square-o"></i>Edit Profile</a></li>
                                 <li><a href="{{ url('/logout') }} "><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                <li><a href="{{ url('/my-applications')}} "><i class="fa fa-btn fa-folder-open"></i>My Applications</a></li>
+                                <!-- only guests can apply, all others are already faculty with jobs-->
+                                @if(Auth::user()-> flag < 1)
+                                  <li><a href="{{ url('/my-applications')}} "><i class="fa fa-btn fa-folder-open"></i>My Applications</a></li>
+                                @endif
                                 <!-- This Notification button should check if the user has notifications. -->
                                 <!-- SCOPE <li><a href="{{ url('/notifications')}} "><i class="fa fa-btn fa-envelope"></i>Notifications</a></li> CREEP -->
                                 <!-- If they do we make a glowy thing or something, otherwise normal -->

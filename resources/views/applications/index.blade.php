@@ -18,16 +18,12 @@
                                 SELECT * FROM applications LEFT JOIN jobs ON applications.job_id=jobs.id; -->
                 @forelse($appInfo as $app)
 
-                  <h4><a href="{{ url('/applications/')}}/{{$app->app_id}}"> {{ $app->title }}</a></h4>
-                  <p style="text-indent: 1em;">
-                    <b>Job Description:</b>
+                  <h4><a href="{{ url('/applications/')}}/{{$app->app_id}}"> {{ $app->first_name }} {{ $app->middle_name }} {{ $app->last_name }}</a></h4>
+                  <p style="text-indent: 2em;">
+                    Position: {{$app-> title}}
                   </p>
                   <p style="text-indent: 2em;">
-                          Ned: {{ $app->first_name }}
-                  </p>
-                  <p style="text-indent: 1em;">
-                  </p>
-                  <p style="text-indent: 1em;">
+                    Applied on {{$app->app_created_at}}
                   </p>
                   @empty
                   <p>No users</p>
