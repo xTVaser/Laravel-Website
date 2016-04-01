@@ -25,6 +25,9 @@
                   <p style="text-indent: 1em;">
                     <i>Applications open from {{ $job->start_date }} to {{ $job->closing_date}}</i>
                   </p>
+                <p>
+                    <hr>
+                </p>
                   @endif
                 @endforeach
         </div>
