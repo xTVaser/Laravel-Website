@@ -16,9 +16,11 @@ class CreateApplicationsTable extends Migration
             $table->increments('id');
             $table->integer('job_id');
             $table->integer('user_id');
-            $table->date('date_posted');
             $table->enum('status', ['Pending', 'Accepted', 'Rejected']);
-            $table->integer('user_id');
+            $table->string('resume_filename');
+            $table->string('resume_md5');
+            $table->string('coverletter_filename');
+            $table->string('coverletter_md5');
             $table->timestamps();
         });
     }

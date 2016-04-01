@@ -1,6 +1,7 @@
 @darkPrim: #c63d0f;
 @mainPrim: #fdf3e7;
 @lightPrim: #ec5a0f;
+@mediumPrim: #8e6132;
 @textCol: #FFFFFF;
 @accent: #558AFF;
 @textPrim: #212121;
@@ -22,6 +23,14 @@ body {
         font-weight: 400;
 }
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+	color: @mediumPrim;
+	background-color: #ec5a0f;
+}
+
+.dropdown-menu > li > a {
+	color: @textCol;
+}
 
 
 .fa-btn {
@@ -73,7 +82,7 @@ body {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
-        color: #555;
+        color: @textSec;
         background-color: @lightPrim;
 }
 .btn-primary {

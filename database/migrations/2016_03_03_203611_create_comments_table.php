@@ -14,10 +14,10 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('application_id');
             $table->integer('author_id');
             $table->text('body');
             $table->timestamps();
-            //Parent relationship not done yet.
         });
     }
 

@@ -9,16 +9,41 @@
 
                 <div class="panel-body">
 
-                        {!! Form::open() !!}
+                        {!! Form::open(array('files' => true)) !!}
                         {!! csrf_field() !!}
+
                         <div class="form-group">
+                                {!! Form::label('First Name') !!}
+                                {!! Form::text('first_name', $profile->first_name, ['class' => 'form-control', 'placeholder' => 'John']) !!}
+                        </div>
+
+                        <div class="form-group">
+                                {!! Form::label('Middle Name') !!}
+                                {!! Form::text('middle_name', $profile->middle_name, ['class' => 'form-control', 'placeholder' => 'M.']) !!}
+                        </div>
+
+                        <div class="form-group">
+                                {!! Form::label('Last Name') !!}
+                                {!! Form::text('last_name', $profile->last_name, ['class' => 'form-control', 'placeholder' => 'Smith']) !!}
+                        </div>
+
+                        <div class="form-group">
+                                {!! Form::label('Contact Email') !!}
+                                {!! Form::email('contact_email', $profile->contact_email, ['class' => 'form-control', 'placeholder' => 'jsmith@algomau.ca']) !!}
+                        </div>
+
+                        <div class="form-group">
+                          {!! Form::label('Resume') !!}
                           {!! Form::file('resume', null, ['class' => 'btn btn-primary form-control']) !!}
                         </div>
-                        
+
                         <div class="form-group">
-                          <!-- this is going to be a hidden field that takes in the job object.
-                          when the application is submitted this is sent with it so that the system knows what job the person is applying for.
-                          write da khode will :D -->
+                          {!! Form::label('Cover Letter') !!}
+                          {!! Form::file('coverletter', null, ['class' => 'btn btn-primary form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                          {!! Form::hidden('job_id', $job->id) !!}
                         </div>
 
                         <div class="form-group">
@@ -27,7 +52,7 @@
 
 
 
-                        {!! Form:close() !!}
+                        {!! Form::close() !!}
                 </div>
             </div>
         </div>

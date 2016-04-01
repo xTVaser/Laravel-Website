@@ -17,32 +17,32 @@
                         </div>
                         <div class="form-group">
                           {!! Form::label('description') !!}
-                          {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                          {!! Form::textarea('description', $job->description, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                           {!! Form::label('qualifications') !!}
-                          {!! Form::textarea('qualifications', null, ['class' => 'form-control']) !!}
+                          {!! Form::textarea('qualifications', $job->qualifications, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                           {!! Form::label('salary') !!}
-                          {!! Form::number('salary', null, ['class' => 'form-control']) !!}
+                          {!! Form::number('salary', $job->salary, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                           {!! Form::label('start_date') !!}
-                          {!! Form::date('start_date', null, ['class' => 'form-control']) !!}
+                          {!! Form::date('start_date', $job->start_date, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                           {!! Form::label('closing_date') !!}
-                          {!! Form::date('closing_date', null, ['class' => 'form-control']) !!}
+                          {!! Form::date('closing_date', $job->closing_date, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                           {!! Form::label('job_type') !!}
-                          {!! Form::text('job_type', null, ['class' => 'form-control']) !!}
+                          {!! Form::text('job_type', $job->job_type, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">

@@ -15,12 +15,19 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Exo:400,900,700,500,300' rel='stylesheet' type='text/css'>
 
-    <!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" </script>
     <link rel="stylesheet" href="{{ URL::asset('stylesheets/customStyle.css') }}" />
+
+    <!-- Scripts -->
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+     <script src="{{ URL::asset('javascript/editableFields.js')}}">
+
+</script>
 
 </head>
 <body id="app-layout">
@@ -45,11 +52,17 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+                  @if (!Auth::guest())
                         <li><a href="{{ url('/jobs')}}">Jobs</a></li>
-                        <li><a href="{{ url('/jobs/create')}}">Create Job</a></li>
-                        <li><a href="{{ url('/applications')}}">Applicants</a></li>
-                        <li><a href="{{ url('/createaccount')}}">Create Account</a></li>
-                        <li><a href="{{ url('/mail-config')}}">Email Testing</a></li>
+                        @if(Auth::user()-> flag >= 1)
+                          <li><a href="{{ url('/applications')}}">Applicants</a></li>
+                          @if(Auth::user()-> flag >= 2)
+                            <li><a href="{{ url('/jobs/create')}}">Create Job</a></li>
+                            <li><a href="{{ url('/createaccount')}}">Create Account</a></li>
+                            <li><a href="{{ url('/mail-config')}}">Email Testing</a></li>
+                          @endif
+                        @endif
+                  @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -68,7 +81,10 @@
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>View Profile</a></li>
                                 <li><a href="{{ url('/editprofile') }}"><i class="fa fa-btn fa-pencil-square-o"></i>Edit Profile</a></li>
                                 <li><a href="{{ url('/logout') }} "><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                <li><a href="{{ url('/my-applications')}} "><i class="fa fa-btn fa-folder-open"></i>My Applications</a></li>
+                                <!-- only guests can apply, all others are already faculty with jobs-->
+                                @if(Auth::user()-> flag < 1)
+                                  <li><a href="{{ url('/my-applications')}} "><i class="fa fa-btn fa-folder-open"></i>My Applications</a></li>
+                                @endif
                                 <!-- This Notification button should check if the user has notifications. -->
                                 <!-- SCOPE <li><a href="{{ url('/notifications')}} "><i class="fa fa-btn fa-envelope"></i>Notifications</a></li> CREEP -->
                                 <!-- If they do we make a glowy thing or something, otherwise normal -->
