@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Request;
+use Mail;
+use App\Profile as Profile;
 use App\Job;
 
 class JobController extends Controller
@@ -15,6 +17,15 @@ class JobController extends Controller
 
       //Return this data to the jobs view
       return view('jobs.index')->with('jobs', $jobs);
+    }
+
+    public function view(Request $request, $id)
+    {
+        $job = Job::find($id);
+
+        $applications = Job::allApplicationsOnJob($id);
+
+        return view('jobs.description')->with('job', $job)->with('applications', $applications);
     }
 
     //Called when the user wants to create a job
@@ -32,5 +43,43 @@ class JobController extends Controller
         Job::create($input);
 
         return redirect('jobs');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $job = Job::find($id);
+
+        return view('jobs.edit')->with('job', $job);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $job = Job::find($id);
+
+        $input = Request::all();
+
+            $job->update($input);
+        $job->save();
+
+
+                    $applications = Job::allApplicationsOnJob($id);
+
+                    foreach($applications as $application) {
+
+                            $profile = Profile::findProfile($application->user_id);
+                            //Email Applicant and tell him he got the job.
+                            Mail::send('emails.goofed', ['profile' => $profile], function ($message) use ($profile) {
+                            $message->from('chair@algomau.ca', 'Hiring Chair');
+                            $message->to($profile->contact_email);
+                            $message->subject('Job Description has Changed');
+                            });
+                    }
+
+
+
+
+            //Redirect to view their profile
+            return redirect()->action('JobController@view', [$id]);
+
     }
 }

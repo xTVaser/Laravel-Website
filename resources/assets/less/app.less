@@ -1,80 +1,116 @@
-@darkPrim:  #c63d0f;
-@mainPrim:  #fdf3e7;
+@darkPrim: #c63d0f;
+@mainPrim: #fdf3e7;
 @lightPrim: #ec5a0f;
-@textCol:   #FFFFFF;
-@accent:    #448AFF;
-@textPrim:  #212121;
-@textSec:   #727272;
-@divider:   #B6B6B6;
+@mediumPrim: #8e6132;
+@textCol: #FFFFFF;
+@accent: #558AFF;
+@textPrim: #212121;
+@textSec: #929292;
+@divider: #B6B6B6;
 @accentHov: #448ADF;
-
+* {
+        border-radius: 0 !important;
+}
+a {
+        color: @textCol;
+}
+a:hover {
+        color: @textSec;
+}
 body {
-  background-color: @mainPrim;
-}
-
-.panel-body {
-  background-color: @textCol;
-}
-
-.navbar {
-  background-color: @darkPrim;
-  border-color: transparent;
-}
-
-.navbar-default .navbar-nav > li > a {
-	color: @textCol;
-
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-	color: @accent;
-
-}
-
-.panel-default > .panel-heading {
-	color: @textPrim;
-	background-color: @lightPrim;
-	border-color: @lightPrim;
-}
-
-.navbar-default .navbar-brand {
-	color: @textCol;
-}
-
-.navbar-default .navbar-brand:hover {
-  color: @accent;
-}
-
-.navbar-default .navbar-brand a:hover {
-  color: @accent;
-}
-
-.dropdown-menu {
-  background-color: @lightPrim;
-  border-color: @divider;
+        background-color: @mainPrim;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
-	color: #555;
-	background-color: @lightPrim;
+	color: @mediumPrim;
+	background-color: #ec5a0f;
 }
 
+.dropdown-menu > li > a {
+	color: @textCol;
+}
+
+
+.fa-btn {
+    margin-right: 6px;
+}
+.panel-body {
+        background-color: @textCol;
+}
+.navbar {
+        background-color: @darkPrim;
+        border-color: transparent;
+}
+.navbar-default .navbar-nav > li > a {
+        color: @textCol;
+        font-family: 'Exo';
+        font-weight: 400;
+}
+.navbar-default .navbar-nav > li > a:hover {
+        color: @textSec;
+}
+.panel-default > .panel-heading {
+        color: @textPrim;
+        background-color: @lightPrim;
+        border-color: @lightPrim;
+        font-family: 'Exo';
+        font-weight: 700;
+}
+
+.panel-body a {
+        color: #0a7cf4;
+        font-weight: 700;
+}
+.navbar-default .navbar-brand {
+        color: @textCol;
+        font-family: 'Exo';
+        font-weight: 900;
+}
+.navbar-default .navbar-brand:hover {
+        color: @textSec;
+        font-family: 'Exo';
+}
+.navbar-default .navbar-brand a:hover {
+        color: @accent;
+}
+.dropdown-menu {
+        background-color: @lightPrim;
+        border-color: @divider;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+        color: @textSec;
+        background-color: @lightPrim;
+}
 .btn-primary {
-	color: @textCol;
-	background-color: @accent;
-  border-color: transparent;
+        color: @textCol;
+        background-color: @accent;
+        border-color: transparent;
 }
-
 .btn-primary:hover {
-	color: @textCol;
-	background-color: @accentHov;
-  border-color: transparent;
+        color: @textCol;
+        background-color: @accentHov;
+        border-color: transparent;
 }
 
-h1, h2, h3, p, label {
-  color: @textPrim;
-}
-
-#panelHeader {
+.btn a {
   color: @textCol;
+}
+
+.btn a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p,
+label {
+        color: @textPrim;
+}
+#panelHeader {
+        color: @textCol;
 }

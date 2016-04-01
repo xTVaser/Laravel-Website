@@ -27,12 +27,12 @@ class User extends Authenticatable
     //Returns the profile of the user
     public function profile()
     {
-        return $this->hasOne('Profile');
+        return $this->hasOne('App\Profile');
     }
 
     //Returns applications that the user has submitted
     public function getApplications()
     {
-        return $this->hasMany('Application');
+        return $this->hasMany('App\Application');
     }
 }

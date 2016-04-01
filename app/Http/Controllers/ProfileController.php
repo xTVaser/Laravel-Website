@@ -3,42 +3,48 @@
 namespace App\Http\Controllers;
 
 use Request;
-use App\Profile;
 use Auth;
+use App\Profile as Profile;
 
 class ProfileController extends Controller
 {
-    public function view(Request $request, $id)
+    public function view($id)
     {
         $profile = Profile::find($id);
+
         return view('profile.profile')->with('profile', $profile);
     }
 
-    public function view_self() {
-      $user = Auth::user();
-      return view('profile.profile')->with('profile', $user->Profile());
+    public function view_self()
+    {
+        $profile = Auth::user()->profile;
+
+        return view('profile.profile')->with('profile', $profile);
     }
 
     public function edit()
     {
-        return view('profile.editProfile');
+        $profile = Auth::user()->profile;
+
+        return view('profile.editProfile')->with('profile', $profile);
+    }
+
+    public function create()
+    {
+        return view('profile.createProfile');
     }
 
     public function update()
     {
-        //Get profile data
+        //Get current logged in user
+        $profile = Auth::user()->profile;
         $input = Request::all();
 
-        //Create new profile from data
-        $profile = Profile::create($input);
+        //Save user's profile
+        $profile->update($input);
+        $profile->save();
 
-        //Get current logged in user
-        $user = Auth::user();
-
-        //Associate the new profile with their account
-        $user->profile()->associate($profile);
-
-        //Redirect to view their profile
+        //Redirect to view their profile?
         return redirect('/profile');
     }
 }

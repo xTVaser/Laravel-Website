@@ -10,13 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-//Temporary Route
-Route::get('/mail-config',  function () {
-    return config('mail');
-});
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -32,6 +25,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
     Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
+    Route::get('/home', array('before' => 'auth', 'uses' => 'HomeController@index'));
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -39,64 +34,74 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //EVERYONES routes------------------------
 
         //Jobs GET requests
-        Route::get('/jobs',             'JobController@index');
+        Route::get('/jobs',                     'JobController@index');
+        Route::get('/jobs/description/{id}',    'JobController@view');
 
         //Profile GET requests
-        Route::get('/profile/{id}',     'ProfileController@view');
-        Route::get('/profile',          'ProfileController@view_self');
-        Route::get('/editprofile',      'ProfileController@edit');
+        Route::get('/profile',                  'ProfileController@view_self');
+        Route::get('/editprofile',              'ProfileController@edit');
 
         //Profile POST requests
-        Route::post('/editprofile',     'ProfileController@update');
-
-        //My Applications Page
-        Route::get('/my-applications', function () { return view('applications.my-applications'); });
+        Route::post('/editprofile',             'ProfileController@update');
 
         //----------------------------------------
 
         //Applicant Pages
         Route::group(['middleware' => 'applicant'], function () {
 
+                //My Applications Page
+                Route::get('/my-applications',          'ApplicationController@viewOwn');
+                Route::get('/apply/{id}',               'ApplicationController@create');
+                Route::post('/apply/{id}',              'ApplicationController@store');
         });
 
         //All Elevated Users
         Route::group(['middleware' => 'elevated'], function () {
 
+                Route::get('/profile/{id}',             'ProfileController@view');
+
                 //Applications
-                Route::get('/applicants',       'ApplicationController@view');
+                Route::get('/applications/{id}',        'ApplicationController@view');
+                Route::get('/applications/',            'ApplicationController@viewAll');
         });
 
         //HIRING MEMBER and HIRING CHAIR Pages
         Route::group(['middleware' => 'committee'], function () {
 
-                //Create Account
-                Route::get('/createaccount', function () { return view('admin.createAccount'); });
+                //Create Account GET
+                Route::get('/createaccount',    'AdminController@viewCreateAccount');
+                //Create Account POST
+                Route::post('/createaccount',   'AdminController@createFromAdmin');
 
                 //Jobs GET requests
                 Route::get('/jobs/create',      'JobController@create');
+                Route::get('/jobs/edit/{id}',   'JobController@edit');
                 //Jobs POST requests
                 Route::post('/jobs/create',     'JobController@store');
+                Route::post('jobs/edit/{id}',   'JobController@update');
+
+                Route::post('/applications/{id}', 'ApplicationController@approveOrDeny');
 
         });
 
         //FACULTY Only Pages//
         Route::group(['middleware' => 'faculty'], function () {
 
-                //Can view others peoples profiles!
+
 
         });
 
         //HIRING MEMBER Only Pages//
         Route::group(['middleware' => 'member'], function () {
 
-                //Can view others peoples profiles!
+
 
         });
 
         //HIRING CHAIR Only Pages//
         Route::group(['middleware' => 'chair'], function () {
 
-                //Can view others peoples profiles!
+
 
         });
 });

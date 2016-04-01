@@ -14,8 +14,13 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date_posted');
+            $table->integer('job_id');
+            $table->integer('user_id');
             $table->enum('status', ['Pending', 'Accepted', 'Rejected']);
+            $table->string('resume_filename');
+            $table->string('resume_md5');
+            $table->string('coverletter_filename');
+            $table->string('coverletter_md5');
             $table->timestamps();
         });
     }

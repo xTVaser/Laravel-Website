@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.less","app.css"],"names":[],"mappings":"AAAA;EAEQ,gBAAA;EACA,iBAAA;EACA,cAAA;CCAP","file":"customCSS.css","sourcesContent":["body {\n\n        color: ##ffa800;\n        text-color: #FFF;\n        lolfabio: ned;\n}\n","body {\n  color: ##ffa800;\n  text-color: #FFF;\n  lolfabio: ned;\n}\n"],"sourceRoot":"/source/"}
