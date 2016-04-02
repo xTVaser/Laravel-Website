@@ -3,31 +3,33 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use DB;
 
 class Application extends Model
 {
-  protected $fillable = [
-    'job_id', 'created_at', 'updated_at',
-  ];
+    //The fields that will automatically be used to fill the Application object from a ->save() call.
+    protected $fillable = [ 'job_id',
+                            'created_at',
+                            'updated_at',
+    ];
 
-  //Gets the job associated with this Application
-  public function getJob() {
+    //Gets the job associated with this Application
+    public function getJob() {
     return $this->hasOne('App\Job');
-  }
+    }
 
-  //Gets the user that the application belongs to
-  public function getUser() {
+    //Gets the user that the application belongs to
+    public function getUser() {
     return $this->hasOne('App\User');
-  }
+    }
 
-  //Gets comments associated with the application
-  public function getComments() {
+    //Gets comments associated with the application
+    public function getComments() {
     return $this->hasMany('App\Comment');
-  }
+    }
 
-  public static function sqlComments($id) {
+    //Will join comments and profiles so comments also have their names associated with them.
+    public static function sqlComments($id) {
 
           return $comments = DB::table('comments')
                                 ->join('profiles', 'comments.author_id', '=', 'profiles.user_id')
@@ -41,9 +43,10 @@ class Application extends Model
                                 ->where('application_id', '=', $id)
                                 ->distinct()
                                 ->get();
-  }
+    }
 
-  public static function joinJobsAndApplicationsAndProfiles() {
+    //Joins all jobs and applications and profiles together
+    public static function joinJobsAndApplicationsAndProfiles() {
 
           return $apps = DB::table('applications')
                             ->join('jobs', 'applications.job_id', '=', 'jobs.id')
@@ -68,9 +71,10 @@ class Application extends Model
                                         'contact_email')
                             ->distinct()
                             ->get();
-  }
+    }
 
-  public static function joinJobsAndApplications() {
+    //Joins all jobs and applications together.
+    public static function joinJobsAndApplications() {
 
           return $apps = DB::table('applications')
                             ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
@@ -90,8 +94,10 @@ class Application extends Model
                                         'jobs.created_at as job_created_at')
                             ->distinct()
                             ->get();
-  }
-  public static function joinJobsAndApplicationsOnID($id) {
+    }
+
+    //Joins jobs and applications on a specific JOB id
+    public static function joinJobsAndApplicationsOnID($id) {
 
           return $apps = DB::table('applications')
                             ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
@@ -111,9 +117,10 @@ class Application extends Model
                                         'jobs.created_at as job_created_at')
                             ->where('applications.id', '=', $id)
                             ->first();
-  }
+    }
 
-  public static function joinJobsAndApplicationsOnUserID($id) {
+    //Joins jobs and applications on a specific USER id
+    public static function joinJobsAndApplicationsOnUserID($id) {
 
           return $apps = DB::table('applications')
                             ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
@@ -134,5 +141,5 @@ class Application extends Model
                             ->distinct()
                             ->where('user_id', '=', $id)
                             ->get();
-  }
+    }
 }

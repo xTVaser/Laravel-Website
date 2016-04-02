@@ -160,19 +160,18 @@ class ApplicationController extends Controller
         $comment->save();
     }
 
+    //Edits an existing comment
     private function editComment($input)
     {
         $comment = Comment::find($input['comment_id']);
-
         $comment->body = $input['commentBody'];
         $comment->update();
     }
 
+    //Creates a new comment and saves it to the database
     private function postComment($request, $id)
     {
-
-            //$comments = Application::find($id)->getComments();
-            $input = $request->all();
+        $input = $request->all();
 
         $comment = new Comment();
         $comment->application_id = $id;
@@ -184,24 +183,23 @@ class ApplicationController extends Controller
 
     private function downloadResume($id)
     {
+        //Find the file via it's md5.
         $app = Application::find($id);
-
         $file = public_path().'/uploads/resumes/'.$app->resume_md5;
-
         return Response::download($file, $app->resume_filename);
     }
 
     private function downloadCoverLetter($id)
     {
+        //Find the file via it's md5
         $app = Application::find($id);
-
         $file = public_path().'/uploads/coverletters/'.$app->coverletter_md5;
-
         return Response::download($file, $app->coverletter_filename);
     }
 
     private function approveApplicant($id)
     {
+        //Mark the application as accepted
         $app = Application::find($id);
         $app->status = 'Accepted';
         $app->save();
@@ -218,8 +216,8 @@ class ApplicationController extends Controller
 
     private function denyApplicant($id)
     {
+        //Find the application and user profile to email them.
         $app = Application::find($id);
-
         $profile = Profile::findProfile($app->user_id);
 
             //Email Applicant and tell him he got the job.
@@ -229,20 +227,21 @@ class ApplicationController extends Controller
             $message->subject('Application Denial');
         });
 
-            //Delete his cover letter and resume
-            File::delete(public_path().'/uploads/resumes/'.$app->resume_md5);
+        //Delete his cover letter and resume
+        File::delete(public_path().'/uploads/resumes/'.$app->resume_md5);
         File::delete(public_path().'/uploads/coverletters/'.$app->coverletter_md5);
 
-            //Delete all respective comments.
-            DB::table('comments')
-                ->where('application_id', '=', $id)
-                ->delete();
+        //Delete all respective comments.
+        DB::table('comments')
+            ->where('application_id', '=', $id)
+            ->delete();
 
-            //Delete the application finally.
-            DB::table('applications')
-                ->where('id', '=', $id)
-                ->delete();
+        //Delete the application finally.
+        DB::table('applications')
+            ->where('id', '=', $id)
+            ->delete();
 
+        //Redirect to the application listing page.
         return $this->viewAll();
     }
 }

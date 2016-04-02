@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//-------------------------------------------------------------------------
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -21,6 +22,7 @@
 |
 */
 
+//Routes that are accessible if you are not authenticated
 Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
@@ -29,9 +31,10 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
+//Routes that are accessible if you are authenicated
 Route::group(['middleware' => ['web', 'auth']], function () {
 
-        //EVERYONES routes------------------------
+    //EVERYONES Routes------------------------
 
         //Jobs GET requests
         Route::get('/jobs',                     'JobController@index');
@@ -44,9 +47,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         //Profile POST requests
         Route::post('/editprofile',             'ProfileController@update');
 
-        //----------------------------------------
+    //----------------------------------------
 
-        //Applicant Pages
+    //Applicant Only Routes ------------------
+
         Route::group(['middleware' => 'applicant'], function () {
 
                 //My Applications Page
@@ -55,7 +59,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 Route::post('/apply/{id}',              'ApplicationController@store');
         });
 
-        //All Elevated Users
+    //----------------------------------------
+
+    //All Elevated Users Routes --------------
+
         Route::group(['middleware' => 'elevated'], function () {
 
                 Route::get('/profile/{id}',             'ProfileController@view');
@@ -65,7 +72,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
                 Route::get('/applications/',            'ApplicationController@viewAll');
         });
 
-        //HIRING MEMBER and HIRING CHAIR Pages
+    //----------------------------------------
+
+    //HIRING MEMBER and HIRING CHAIR Routes --
+
         Route::group(['middleware' => 'committee'], function () {
 
                 //Create Account GET
@@ -84,24 +94,32 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
         });
 
-        //FACULTY Only Pages//
+    //----------------------------------------
+
+    //FACULTY Only Routes --------------------
+
         Route::group(['middleware' => 'faculty'], function () {
 
-
-
+                //Empty
         });
 
-        //HIRING MEMBER Only Pages//
+    //----------------------------------------
+
+    //HIRING MEMBER Only Routes --------------
+
         Route::group(['middleware' => 'member'], function () {
 
-
-
+                //Empty
         });
 
-        //HIRING CHAIR Only Pages//
+    //----------------------------------------
+
+    //HIRING CHAIR Only Routes ---------------
+
         Route::group(['middleware' => 'chair'], function () {
 
-
-
+                //Empty
         });
+        
+    //----------------------------------------
 });
