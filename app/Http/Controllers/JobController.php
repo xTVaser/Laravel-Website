@@ -9,6 +9,7 @@ use App\Job;
 
 class JobController extends Controller
 {
+  //View all available jobs
   public function index()
   {
     //Get all jobs from the database
@@ -18,13 +19,15 @@ class JobController extends Controller
     return view('jobs.index')->with('jobs', $jobs);
   }
 
+  //View a specific job
   public function view(Request $request, $id)
   {
     $job = Job::find($id);
 
     $applications = Job::allApplicationsOnJob($id);
 
-    return view('jobs.description')->with('job', $job)->with('applications', $applications);
+    return view('jobs.description') ->with('job', $job)
+                                    ->with('applications', $applications);
   }
 
   //Called when the user wants to create a job
@@ -52,6 +55,7 @@ class JobController extends Controller
 
     Job::create($input);
 
+    //Redirect to the job listing page.
     return redirect('jobs');
   }
 
@@ -72,6 +76,7 @@ class JobController extends Controller
     return view('jobs.edit')->with('job', $job);
   }
 
+  //Called to actually update a jobs information
   public function update(Request $request, $id)
   {
     $this->validate($request, [
@@ -84,6 +89,7 @@ class JobController extends Controller
       'job_type' => 'required|max:255',
     ]);
 
+    //Update the job from all the information from the request
     $job = Job::find($id);
 
     $input = Request::all();
@@ -91,9 +97,9 @@ class JobController extends Controller
     $job->update($input);
     $job->save();
 
-
     $applications = Job::allApplicationsOnJob($id);
 
+    //If a job is edited, email everyone who applied for it and notify them.
     foreach($applications as $application) {
 
       $profile = Profile::findProfile($application->user_id);

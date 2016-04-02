@@ -120,6 +120,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
                 //Empty
         });
-        
+
     //----------------------------------------
 });
