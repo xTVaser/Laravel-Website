@@ -39,7 +39,7 @@ class JobController extends Controller
   {
     //Validate incoming parameters before
     $this->validate($request, [
-      'title' => 'required|max:255',
+      'title' => 'required|max:255|unique',
       'description' => 'required|max:255',
       'qualifications' => 'required',
       'salary' => 'required',
@@ -84,7 +84,7 @@ class JobController extends Controller
       'closing_date' => 'required',
       'job_type' => 'required|max:255',
     ]);
-    
+
     $job = Job::find($id);
 
     $input = Request::all();

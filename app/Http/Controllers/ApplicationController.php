@@ -59,11 +59,6 @@ class ApplicationController extends Controller
       $this->validate($request, [
         'job_id' => 'required',
         'user_id' => 'required',
-        'status' => 'required',
-        'resume_filename' => 'required',
-        'resume_md5' => 'required',
-        'coverletter_filename' => 'required',
-        'coverletter_md5' => 'required',
       ]);
 
         $input = $request->all();
