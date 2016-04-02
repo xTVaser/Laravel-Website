@@ -44,7 +44,7 @@ class JobController extends Controller
       'title' => 'required|max:255',
       'description' => 'required|max:255',
       'qualifications' => 'required',
-      'salary' => 'required',
+      'salary' => 'required|integer',
       'start_date' => 'required',
       'closing_date' => 'required',
       'job_type' => 'required|max:255',
