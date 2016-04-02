@@ -41,8 +41,6 @@
                     </div>
 
 
-
-
                     <div class="form-group">
                             {!! Form::textarea('commentText', null, ['class' => 'form-control', 'placeholder' => 'Comment...']) !!}
                     </div>
@@ -56,7 +54,7 @@
                     @forelse($comments as $comment)
 
                     <p style="text-indent: 1em;">
-                      <b>{{ $comment->body }}</b>
+                      {{ $comment->body }}
                       {!! Form::open() !!}
                       {!! csrf_field() !!}
                       <div id="comment{{ $comment->id }}">

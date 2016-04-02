@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Apply</div>
 
+                <div class="panel-heading">Apply</div>
                 <div class="panel-body">
 
                         {!! Form::open(array('files' => true)) !!}
@@ -33,13 +33,13 @@
                         </div>
 
                         <div class="form-group">
-                          {!! Form::label('Resume') !!}
-                          {!! Form::file('resume', null, ['class' => 'btn btn-primary form-control']) !!}
+                            <label for="Resume">Resume</label>
+                            <input name="resume" type="file" accept="application/pdf,application/vnd.oasis.opendocument.text,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword">
                         </div>
 
                         <div class="form-group">
-                          {!! Form::label('Cover Letter') !!}
-                          {!! Form::file('coverletter', null, ['class' => 'btn btn-primary form-control']) !!}
+                            <label for="Cover Letter">Cover Letter</label>
+                            <input name="coverletter" type="file" accept="application/pdf,application/vnd.oasis.opendocument.text,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword">
                         </div>
 
                         <div class="form-group">

@@ -7,7 +7,7 @@ use App\Profile as Profile;
 use DB;
 use Mail;
 
-
+//Handles all Admin specific tasks, such as making new user accounts.
 class AdminController extends Controller
 {
     protected function viewCreateAccount()
@@ -15,6 +15,7 @@ class AdminController extends Controller
         return view('admin.createAccount');
     }
 
+    //Will construct a new account.
     protected function createFromAdmin(Request $request)
     {
         //Make a random password
@@ -22,11 +23,12 @@ class AdminController extends Controller
 
         //Send off email with password and such
         Mail::send('emails.newaccount', ['password' => $password], function ($message) use ($request) {
-        $message->from('chair@algomau.ca', 'Hiring Chair');
-        $message->to($request['email']);
-        $message->subject('Faculty or Member Account Creation');
-    });
+                        $message->from('chair@algomau.ca', 'Hiring Chair');
+                        $message->to($request['email']);
+                        $message->subject('Faculty or Member Account Creation');
+        });
 
+        //Add a new user to the database.
         $id = DB::table('users')->insertGetId([
             'email' => $request['email'],
             'password' => bcrypt($password),
@@ -47,8 +49,10 @@ class AdminController extends Controller
         $profile->contact_email = 'freeloader@freeloaders.com';
         $profile->linkedin_link = 'freeloader1';
 
+        //Save the profile object into the database.
         $profile->save();
 
+        //After creating the account, we redirect to the homepage.
         return view('home');
     }
 }
