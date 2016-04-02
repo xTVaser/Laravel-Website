@@ -41,13 +41,11 @@ class ProfileController extends Controller
         $this->validate($request, [
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
             'gender' => 'required',
             'job_title' => 'required|max:255',
             'department' => 'required|max:255',
             'company' => 'required|max:255',
             'description' => 'required',
-            'birthdate' => 'required|max:255',
             'birthdate' => 'required|max:255',
             'contact_email' => 'required|max:255',
             'linkedin_link' => 'required|max:255',

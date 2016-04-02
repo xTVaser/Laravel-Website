@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Mail;
 use App\Profile as Profile;
 use App\Job;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
@@ -41,7 +41,7 @@ class JobController extends Controller
   {
     //Validate incoming parameters before
     $this->validate($request, [
-      'title' => 'required|max:255|unique',
+      'title' => 'required|max:255',
       'description' => 'required|max:255',
       'qualifications' => 'required',
       'salary' => 'required',
@@ -51,7 +51,7 @@ class JobController extends Controller
     ]);
 
     //Creates a new job using all form input (fields set in Model as fillable (mass assignment))
-    $input = Request::all();
+    $input = $request->all();
 
     Job::create($input);
 
@@ -61,16 +61,6 @@ class JobController extends Controller
 
   public function edit(Request $request, $id)
   {
-    $this->validate($request, [
-      'title' => 'required|max:255|unique',
-      'description' => 'required|max:255',
-      'qualifications' => 'required',
-      'salary' => 'required',
-      'start_date' => 'required',
-      'closing_date' => 'required',
-      'job_type' => 'required|max:255',
-    ]);
-
     $job = Job::find($id);
 
     return view('jobs.edit')->with('job', $job);
@@ -92,7 +82,7 @@ class JobController extends Controller
     //Update the job from all the information from the request
     $job = Job::find($id);
 
-    $input = Request::all();
+    $input = $request->all();
 
     $job->update($input);
     $job->save();
@@ -110,5 +100,7 @@ class JobController extends Controller
         $message->subject('Job Description has Changed');
       });
     }
+
+    return redirect('jobs');
   }
 }

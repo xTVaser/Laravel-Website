@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Response;
 use Auth;
 use DB;
@@ -12,6 +11,7 @@ use App\Application as Application;
 use App\Job as Job;
 use App\Profile as Profile;
 use App\Comment as Comment;
+use Illuminate\Http\Request;
 
 //Handles all tasks related to creating or maintaining applications.
 class ApplicationController extends Controller
@@ -70,13 +70,14 @@ class ApplicationController extends Controller
     {
         //Validation on the form
         $this->validate($request, [
-            'job_id' => 'required',
-            'resume_filename' => 'required',
-            'coverletter_filename' => 'required'
+            'job_id' => 'required|unique:applications',
+            'resume' => 'required',
+            'coverletter' => 'required',
         ]);
 
         //Get all of the form input
         $input = $request->all();
+
         //Create a new application and set it's foreign key right away.
         $application = Application::create($input);
         $application->user_id = Auth::user()->id;
