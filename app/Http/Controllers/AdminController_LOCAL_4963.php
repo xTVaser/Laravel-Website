@@ -7,7 +7,7 @@ use App\Profile as Profile;
 use DB;
 use Mail;
 
-//Handles all Admin specific tasks, such as making new user accounts.
+
 class AdminController extends Controller
 {
   protected function viewCreateAccount()

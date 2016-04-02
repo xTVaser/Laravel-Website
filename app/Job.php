@@ -7,17 +7,24 @@ use DB;
 
 class Job extends Model
 {
-  //Fields that can be filled automatically
-  protected $fillable = [
-    'title', 'description', 'qualifications', 'salary', 'start_date', 'closing_date', 'job_type',
-  ];
+    //Fields that can be filled automatically
+    protected $fillable = [
+        'title',
+        'description',
+        'qualifications',
+        'salary',
+        'start_date',
+        'closing_date',
+        'job_type',
+    ];
 
-  //Gets the applications associated with this job
-  public function getApplications() {
-    return $this->hasMany('App\Application');
-  }
+    //Gets the applications associated with this job
+    public function getApplications() {
+        return $this->hasMany('App\Application');
+    }
 
-  public static function allApplicationsOnJob($id) {
+    //Joins all applications and jobs on a specific JOB id
+    public static function allApplicationsOnJob($id) {
 
           return $applications = DB::table('applications')
                     ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
@@ -36,5 +43,5 @@ class Job extends Model
                                 'jobs.created_at as job_created_at')
                     ->where('applications.job_id', '=', $id)
                     ->get();
-  }
+    }
 }

@@ -11,7 +11,6 @@ class JobController extends Controller
 {
   public function index()
   {
-
     //Get all jobs from the database
     $jobs = Job::all();
 
@@ -59,7 +58,7 @@ class JobController extends Controller
   public function edit(Request $request, $id)
   {
     $this->validate($request, [
-      'title' => 'required|max:255',
+      'title' => 'required|max:255|unique',
       'description' => 'required|max:255',
       'qualifications' => 'required',
       'salary' => 'required',
@@ -105,12 +104,5 @@ class JobController extends Controller
         $message->subject('Job Description has Changed');
       });
     }
-
-
-
-
-    //Redirect to view their profile
-    return redirect()->action('JobController@view', [$id]);
-
   }
 }
