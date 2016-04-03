@@ -10,49 +10,54 @@ use Mail;
 //Handles all Admin specific tasks, such as making new user accounts.
 class AdminController extends Controller
 {
-    protected function viewCreateAccount()
-    {
-        return view('admin.createAccount');
-    }
+  protected function viewCreateAccount()
+  {
+    return view('admin.createAccount');
+  }
 
-    //Will construct a new account.
-    protected function createFromAdmin(Request $request)
-    {
-        //Make a random password
-        $password = md5(time());
+  //Will construct a new account.
+  protected function createFromAdmin(Request $request)
+  {
+    $this->validate($request, [
+      'email' => 'required|unique:users',
+      'flag' => 'required',
+    ]);
 
-        //Send off email with password and such
-        Mail::send('emails.newaccount', ['password' => $password], function ($message) use ($request) {
-                        $message->from('chair@algomau.ca', 'Hiring Chair');
-                        $message->to($request['email']);
-                        $message->subject('Faculty or Member Account Creation');
-        });
+    //Make a random password
+    $password = md5(time());
 
-        //Add a new user to the database.
-        $id = DB::table('users')->insertGetId([
-            'email' => $request['email'],
-            'password' => bcrypt($password),
-            'flag' => $request['flag'],
-        ]);
+    //Send off email with password and such
+    Mail::send('emails.newaccount', ['password' => $password], function ($message) use ($request) {
+      $message->from('chair@algomau.ca', 'Hiring Chair');
+      $message->to($request['email']);
+      $message->subject('Faculty or Member Account Creation');
+    });
 
-        //Create new profile and associate it with the user
-        $profile = new Profile();
-        $profile->user_id = $id;
-        $profile->first_name = 'Free';
-        $profile->middle_name = '';
-        $profile->last_name = 'Loader';
-        $profile->gender = 'Other';
-        $profile->job_title = 'Freeloader';
-        $profile->department = 'Freeloading';
-        $profile->company = 'Freeloaders Inc.';
-        $profile->birthdate = '1970-01-01';
-        $profile->contact_email = 'freeloader@freeloaders.com';
-        $profile->linkedin_link = 'freeloader1';
+    //Add a new user to the database.
+    $id = DB::table('users')->insertGetId([
+      'email' => $request['email'],
+      'password' => bcrypt($password),
+      'flag' => $request['flag'],
+    ]);
 
-        //Save the profile object into the database.
-        $profile->save();
+    //Create new profile and associate it with the user
+    $profile = new Profile();
+    $profile->user_id = $id;
+    $profile->first_name = 'Free';
+    $profile->middle_name = '';
+    $profile->last_name = 'Loader';
+    $profile->gender = 'Other';
+    $profile->job_title = 'Freeloader';
+    $profile->department = 'Freeloading';
+    $profile->company = 'Freeloaders Inc.';
+    $profile->birthdate = '1970-01-01';
+    $profile->contact_email = 'freeloader@freeloaders.com';
+    $profile->linkedin_link = 'freeloader1';
 
-        //After creating the account, we redirect to the homepage.
-        return view('home');
-    }
+    //Save the profile object into the database.
+    $profile->save();
+
+    //After creating the account, we redirect to the homepage.
+    return view('home');
+  }
 }
