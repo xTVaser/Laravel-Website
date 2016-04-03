@@ -8,8 +8,8 @@
                 <div class="panel-heading" id="panelHeader">Home Page</div>
 
                 <div class="panel-body">
-                    This is the homepage, it is fairly useless at the moment!<br><br>
-                    Perhaps we should have some links?
+                    Welcome!!<br><br>
+                    Webpage By: Tyler Wilding, Fabio Compioni, Justin Bertolissi, Robert Brown and William Sigouin
                 </div>
             </div>
         </div>
