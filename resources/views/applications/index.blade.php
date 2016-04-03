@@ -26,7 +26,7 @@
                     Applied on {{$app->app_created_at}}
                   </p>
                   @empty
-                  <p>No users</p>
+                  <p>No Applications</p>
                   @endforelse
         </div>
       </div>

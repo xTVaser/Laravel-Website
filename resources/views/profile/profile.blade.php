@@ -58,10 +58,8 @@
 
 
 
-
-
-                    <button class="btn btn-primary"><a href="linkedinpagehere">My LinkedIn Page</a></button>
-                    <button class="btn btn-primary"><a href="{{ url('/editprofile') }}">Edit</a></button>
+                  <btn class="btn btn-primary"><a href="https://www.linkedin.com/in/{{ $profile->linkedin_link }}">My Linkedin Page</a></btn>
+                  <btn class="btn btn-primary"><a href="{{ url('/editprofile/')}}">Edit</a></btn>
                 <div class="col-md-10 col-md-offset-1">
         </div>
       </div>

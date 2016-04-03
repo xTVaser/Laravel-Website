@@ -40,22 +40,21 @@ class ProfileController extends Controller
         //Ensure that the request is valid before updating the database
         $this->validate($request, [
             'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
+            'middle_name' => 'max:255',
             'last_name' => 'required|max:255',
             'gender' => 'required',
-            'job_title' => 'required|max:255',
-            'department' => 'required|max:255',
-            'company' => 'required|max:255',
-            'description' => 'required',
-            'birthdate' => 'required|max:255',
-            'birthdate' => 'required|max:255',
+            'job_title' => 'max:255',
+            'department' => 'max:255',
+            'company' => 'max:255',
+            'description' => 'max:5000',
+            'birthdate' => 'max:255',
             'contact_email' => 'required|max:255',
-            'linkedin_link' => 'required|max:255',
+            'linkedin_link' => 'max:255',
         ]);
 
         //Get current logged in user
         $profile = Auth::user()->profile;
-            $input = Request::all();
+        $input = $request->all();
 
         //Save user's profile
         $profile->update($input);
