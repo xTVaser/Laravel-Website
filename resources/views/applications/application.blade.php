@@ -51,7 +51,7 @@
 
                     @forelse($comments as $comment)
                         <div class="col-md-10" style="padding-bottom: 4em">
-                            <p style="text-indent: 1em;">{{ $comment->body }}</p>
+                            <p id="commentText{{ $comment->id }}" style="text-indent: 1em;">{{ $comment->body }}</p>
                             <i>{{ $comment->author_name }} - Created At: {{ $comment->created_at }}</i>
                             @if( $comment->created_at != $comment->updated_at )
                             <b><i> - Edited at: {{ $comment->updated_at }}</b></i>
@@ -67,7 +67,7 @@
                                 @if( $comment->author_id != $currentUser )
                                     <input id="replyButton{{ $comment->id }}" type="button" value="Reply" class="btn btn-info" onclick="clickReply({{ $comment->id }});" />
                                 @else
-                                    <input id="editButton{{ $comment-> id }}" type="button" value="Edit" class="btn btn-warning" onclick="clickEdit({{ $comment->id }}, '{{ $comment->body }}');" />
+                                    <input id="editButton{{ $comment-> id }}" type="button" value="Edit" class="btn btn-warning" onclick="clickEdit({{ $comment->id }});" />
                                 @endif
                                 </div>
                             </div>
@@ -80,5 +80,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

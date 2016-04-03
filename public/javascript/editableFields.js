@@ -1,6 +1,6 @@
-function clickEdit(commentId, commentBody) {
+function clickEdit(commentId) {
 
-         $("#comment"+commentId).append("<br><textarea class=\"form-control\" placeholder=\"\" name=\"commentBody\" cols=\"50\" rows=\"10\">"+commentBody+"</textarea>");
+         $("#comment"+commentId).append("<br><textarea class=\"form-control\" placeholder=\"\" name=\"commentBody\" cols=\"50\" rows=\"10\">"+$("#commentText"+commentId).text()+"</textarea>");
          $("#comment"+commentId).append("<input type=\"submit\" name=\"edit_comment\" value=\"Submit Edit\" class=\"btn btn-success\">");
 
          var button = $("#editButton"+commentId);

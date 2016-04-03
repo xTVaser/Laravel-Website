@@ -140,7 +140,7 @@ class ApplicationController extends Controller
             return $this->downloadCoverLetter($id);
         } elseif ($request->get('post_comment') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3)) {
             $this->postComment($request, $id);
-        } elseif ($request->get('edit_comment') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3)) {
+        } elseif ($request->get('edit_comment')) {
             $this->editComment($request->all());
         } elseif ($request->get('reply_comment') && ($user_flag == 1 || $user_flag == 2 || $user_flag == 3)) {
             $this->replyComment($request->all(), $id);
