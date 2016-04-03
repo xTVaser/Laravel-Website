@@ -70,10 +70,16 @@ class ApplicationController extends Controller
     {
         //Validation on the form
         $this->validate($request, [
-            'job_id' => 'required|unique:applications',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'contact_email' => 'required',
             'resume' => 'required',
             'coverletter' => 'required',
         ]);
+
+        $checkIfApplied = Application::joinJobsAndApplicationsOnUserID(Auth::user()->id);
+        if($checkIfApplied != null)
+            return redirect('home');
 
         //Get all of the form input
         $input = $request->all();
@@ -83,10 +89,10 @@ class ApplicationController extends Controller
         $application->user_id = Auth::user()->id;
 
         //Don't allow huge resumes
-        if($request->hasFile('resume') && $request->file('resume')->getMaxFilesize() < 5242880)
+        if($request->hasFile('resume') && $request->file('resume')->getMaxFilesize() > 5242880)
             return redirect('home');
 
-        if($request->hasFile('coverletter') && $request->file('coverletter')->getMaxFilesize() < 5242880)
+        if($request->hasFile('coverletter') && $request->file('coverletter')->getMaxFilesize() > 5242880)
             return redirect('home');
 
 
